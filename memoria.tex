@@ -3,43 +3,43 @@
 %%
 %% Por Gregorio Robles <grex arroba gsyc.urjc.es>
 %%     Grupo de Sistemas y Comunicaciones
-%%     Escuela T�cnica Superior de Ingenieros de Telecomunicaci�n
+%%     Escuela Técnica Superior de Ingenieros de Telecomunicación
 %%     Universidad Rey Juan Carlos
 %% (muchas ideas tomadas de Internet, colegas del GSyC, antiguos alumnos...
 %%  etc. Muchas gracias a todos)
 %%
-%% La �ltima versi�n de esta plantilla est� siempre disponible en:
+%% La última versión de esta plantilla está siempre disponible en:
 %%     https://github.com/gregoriorobles/plantilla-memoria
 %%
 %% Para obtener PDF, ejecuta en la shell:
 %%   make
-%% (las im�genes deben ir en PNG o JPG)
+%% (las imágenes deben ir en PNG o JPG)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, 12pt]{book}
 %\usepackage[T1]{fontenc}
-
+\usepackage[utf8]{inputenc}
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
 \usepackage{times}
-\usepackage[latin1]{inputenc}
-\usepackage[spanish]{babel} % Comenta esta l�nea si tu memoria es en ingl�s
+%\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel} % Comenta esta línea si tu memoria es en inglés
 \usepackage{url}
 %\usepackage[dvipdfm]{graphicx}
 \usepackage{graphicx}
 \usepackage{float}  %% H para posicionar figuras
-\usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de �ndice
+\usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de índice
 \usepackage{latexsym}  %% Logo LaTeX
 
-\title{Memoria del Proyecto}
-\author{Ra�l S�nchez L�pez}
+\title{Análisis de proyectos Python de GitHub con Coala}
+\author{Raúl Sánchez López}
 
 \renewcommand{\baselinestretch}{1.5}  %% Interlineado
 
 \begin{document}
 
-\renewcommand{\refname}{Bibliograf�a}  %% Renombrando
-\renewcommand{\appendixname}{Ap�ndice}
+\renewcommand{\refname}{Bibliografía}  %% Renombrando
+\renewcommand{\appendixname}{Apéndice}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PORTADA
@@ -61,26 +61,26 @@
 \vspace{3cm}
 
 \Large
-TITULACI�N EN MAY�SCULAS
+INGENIERÍA DE TELECOMUNICACIÓN
 
 \vspace{0.4cm}
 
 \large
-Curso Acad�mico 2020/2021
+Curso Académico 2016/2017
 
 \vspace{0.8cm}
 
-Trabajo Fin de Carrera/Grado/M�ster
+Proyecto Fin de Carrera
 
 \vspace{2.5cm}
 
 \LARGE
-T�TULO DEL TRABAJO EN MAY�SCULAS
+ANÁLISIS DE PROYECTOS PYTHON DE GITHUB CON COALA
 
 \vspace{4cm}
 
 \large
-Autor : Nombre del Alumno \\
+Autor : Raúl Sánchez López \\
 Tutor : Dr. Gregorio Robles
 \end{center}
 \end{titlepage}
@@ -103,17 +103,17 @@ Tutor : Dr. Gregorio Robles
 
 \vspace{1cm}
 \large
-FIXME: T�tulo
+FIXME: Título
 
 \vspace{1cm}
 \large
-\textbf{Autor :} FIXME \\
-\textbf{Tutor :} Dr. Gregorio Robles Mart�nez
+\textbf{Autor :} Raúl Sánchez López \\
+\textbf{Tutor :} Dr. Gregorio Robles Martínez
 
 \end{center}
 
 \vspace{1cm}
-La defensa del presente Proyecto Fin de Carrera se realiz� el d�a \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 20XX, siendo calificada por el siguiente tribunal:
+La defensa del presente Proyecto Fin de Carrera se realizó el día \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 2017, siendo calificada por el siguiente tribunal:
 
 
 \vspace{0.5cm}
@@ -127,15 +127,15 @@ La defensa del presente Proyecto Fin de Carrera se realiz� el d�a \qquad$\;\,$ d
 
 
 \vspace{1.2cm}
-y habiendo obtenido la siguiente calificaci�n:
+y habiendo obtenido la siguiente calificación:
 
 \vspace{1cm}
-\textbf{Calificaci�n:}
+\textbf{Calificación:}
 
 
 \vspace{1cm}
 \begin{flushright}
-Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 20XX
+Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 2017
 \end{flushright}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,46 +145,45 @@ Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 20XX
 \pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
 \begin{flushright}
 \textit{Dedicado a \\
-mi familia / mi abuelo / mi abuela}
+mi familia, que siempre me ha apoyado.}
 \end{flushright}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Agradecimientos
 
 \chapter*{Agradecimientos}
-%\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el �ndice
+%\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado 
 
-Aqu� vienen los agradecimientos\ldots Aunque est� bien acordarse de la pareja,
+Aquí vienen los agradecimientos\ldots Aunque está bien acordarse de la pareja,
 no hay que olvidarse de dar las gracias a tu madre, que aunque a veces no lo 
-parezca disfrutar� tanto de tus logros como t�\ldots Adem�s, la pareja quiz�s
-no sea para siempre, pero tu madre s�.
+parezca disfrutará tanto de tus logros como tú\ldots Además, la pareja quizás
+no sea para siempre, pero tu madre sí.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen
 
 \chapter*{Resumen}
-%\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el �ndice
+%\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Aqu� viene un resumen del proyecto. Ha de constar de tres o cuatro p�rrafos,
-donde se presente de manera clara y concisa de qu� va el proyecto. Han
-de quedar respondidas las siguientes preguntas:
+Este proyecto tiene como objetivo la creación de una aplicación web para el análisis de
+proyectos de GitHub con coala. Este análisis puede dar una idea acerca de la calidad de
+los proyectos analizados, ya que a través de los diferentes bears con los que cuenta, es
+capaz de detectar un gran número de problemas en el código y mostrar de forma clara y ordenada
+estos resultados.
 
-\begin{itemize}
-  \item �De qu� va este proyecto? �Cu�l es su objetivo principal?
-  \item �C�mo se ha realizado? �Qu� tecnolog�as est�n involucradas?
-  \item �En qu� contexto se ha realizado el proyecto? �Es un proyecto
-dentro de un marco general?
-\end{itemize}
-
-Lo mejor es escribir el resumen al final.
+La aplicación web se ha desarrollado con Python, utilizando DJANGO para la interfaz web
+y tecnologias como Coala, BootStrap, CSS, HTML y JavaScript. El proyecto está enfocado al
+análisis de proyectos Python alojados en GitHub, aunque con unos pequeños cambios podría ser
+utilizado para analizar código de cualquier otro de los muchos lenguajes de programación que
+soporta coala.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Resumen en ingl�s
+%%%% Resumen en inglés
 
 \chapter*{Summary}
-%\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el �ndice
+%\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el índice
 \markboth{SUMMARY}{SUMMARY} % encabezado
 
 Here comes a translation of the ``Resumen'' into English. Please, double check
@@ -195,20 +194,20 @@ just before submitting.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% �NDICES %
+% ÍNDICES %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Las buenas noticias es que los �ndices se generan autom�ticamente.
-% Lo �nico que tienes que hacer es elegir cu�les quieren que se generen,
-% y comentar/descomentar esa instrucci�n de LaTeX.
+% Las buenas noticias es que los índices se generan automáticamente.
+% Lo único que tienes que hacer es elegir cuáles quieren que se generen,
+% y comentar/descomentar esa instrucción de LaTeX.
 
-%%%% �ndice de contenidos
+%%%% Índice de contenidos
 \tableofcontents 
-%%%% �ndice de figuras
+%%%% Índice de figuras
 \cleardoublepage
 %\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
 \listoffigures % indice de figuras
-%%%% �ndice de tablas
+%%%% Índice de tablas
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
 %\listoftables % indice de tablas
@@ -216,79 +215,41 @@ just before submitting.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% INTRODUCCI�N %
+% INTRODUCCIÓN %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\chapter{Introducci�n}
+\chapter{Introducción}
 \label{sec:intro} % etiqueta para poder referenciar luego en el texto con ~\ref{sec:intro}
-\pagenumbering{arabic} % para empezar la numeraci�n de p�gina con n�meros
+\pagenumbering{arabic} % para empezar la numeración de página con números
 
-En este cap�tulo se introduce el proyeto. Deber�a tener informaci�n general sobre 
-el mismo, dando la informaci�n sobre el contexto en el que se ha desarrollado.
-
-No te olvides de echarle un ojo a la p�gina con los cinco errores de escritura m�s frecuentes\footnote{\url{http://www.tallerdeescritores.com/errores-de-escritura-frecuentes}}.
-
-\section{}
+\section{Presentación}
 \label{sec:}
+El presente documento es la memoria de el trabajo realizado para el proyecto fin de carrera de Ingeniería de Telecomunicación. El proyecto consiste en la creación de una herramienta para analizar proyectos Python alojados en la plataforma GitHub, apoyado en la herramienta Coala.
 
-\subsection{Estilo}
-\label{subsec:estilo}
+A la hora de desarrollar un proyecto es importante localizar y solventar los posibles problemas que presenten. Si contamos con una herramienta que pueda detectar posibles errores y, adicionalmente, alertar sobre discrepancias con la guia de estilo del lenguaje de programación que estemos usando, tendremos la información necesaria para ayudarnos a solucionar los errores y mejorar la calidad de nuestro proyecto.
 
-Sobre el uso de las comas\footnote{\url{http://narrativabreve.com/2015/02/opiniones-de-un-corrector-de-estilo-11-recetas-para-escribir-correctamente-la-coma.html}}
+La aplicación web almacena la información recogida tras analizar los proyectos y la muestra de forma ordenada a varios niveles, facilitando la visualización de los datos. En este caso, la aplicación se ha orientado al análisis de proyectos Python, aunque puede servir como punto de partida para, haciendo algunos cambios, analizar proyectos desarrollados en otros lenguajes de programación, gracias a que Coala es compatible con un gran número de lenguajes de programación.
 
- \begin{figure}
-    \centering
-    \includegraphics[bb=0 0 800 600, width=12cm, keepaspectratio]{img/foro1}
-    \caption{P�gina con enlaces a hilos}
-    \label{figura:foro_hilos}
- \end{figure}
-
-{\footnotesize
-\begin{verbatim}
-    From gaurav at gold-solutions.co.uk  Fri Jan 14 14:51:11 2005
-    From: gaurav at gold-solutions.co.uk (gaurav_gold)
-    Date: Fri Jan 14 19:25:51 2005
-    Subject: [Mailman-Users] mailman issues
-    Message-ID: <003c01c4fa40$1d99b4c0$94592252@gaurav7klgnyif>
-
-    Dear Sir/Madam,
-    How can people reply to the mailing list?  How do i turn off
-    this feature? How can i also enable a feature where if someone
-    replies the newsletter the email gets deleted?
-    Thanks
-
-    From msapiro at value.net  Fri Jan 14 19:48:51 2005
-    From: msapiro at value.net (Mark Sapiro)
-    Date: Fri Jan 14 19:49:04 2005
-    Subject: [Mailman-Users] mailman issues
-    In-Reply-To: <003c01c4fa40$1d99b4c0$94592252@gaurav7klgnyif>
-    Message-ID: <PC173020050114104851057801b04d55@msapiro>
-
-    gaurav_gold wrote:
-    >How can people reply to the mailing list?  How do i turn off
-    this feature? How can i also enable a feature where if someone
-    replies the newsletter the email gets deleted?
-
-    See the FAQ
-    >Mailman FAQ: http://www.python.org/cgi-bin/faqw-mm.py
-    article 3.11
-\end{verbatim}
-}
+Básicamente contamos con dos funcionalidades principales: analizar proyectos y consultar los datos almacenados. A la hora de crear la interfaz web he pensado en la sencillez, de modo que el usuario pueda hacer uso de forma rápida, sencilla e intuitiva de las características de la herramienta, mostrando la información de forma clara y ordenada.
 
 \section{Estructura de la memoria}
 \label{sec:estructura}
 
-En esta secci�n se deber�a introducir la esctura de la memoria. As�:
+La memoria está estructurada del siguiente modo:
 
 \begin{itemize}
-  \item En el primer cap�tulo se hace una intro al proyecto.
+  \item \textbf{Capítulo 1. Introducción.} Descripción general del proyecto y breve explicación de la estructura del mismo.
   
-  \item En el cap�tulo~\ref{chap:objetivos} se muestran los objetivos del proyecto.
+  \item \textbf{Capítulo 2. Objetivos.} Exposición del objetivo general del trabajo, así como los objetivos más específicos que se pretenden alcanzar con este trabajo. Finalmente se incluye la planificación temporal seguida.
   
-  \item A continuaci�n se presenta el estado del arte.
+  \item \textbf{Capítulo 3. Estado del arte.} Descripción de las diferentes tecnologías utilizadas para el desarrollo de la aplicación web.
   
-  \item \ldots
+  \item \textbf{Capítulo 4. Diseño e implementación.} Explicación del desarrollo, estructura y funcionamiento del proyecto basado en las tecnologías descritas en el punto anterior.
+
+  \item \textbf{Capítulo 5. Resultados.} Análisis de los resultados obtenidos.
+
+  \item \textbf{Capítulo 6. Conclusiones.} Reflexión y conclusiones finales sobre el desarrollo del proyecto.
 \end{itemize}
 
 
@@ -303,16 +264,34 @@ En esta secci�n se deber�a introducir la esctura de la memoria. As�:
 \label{chap:objetivos}
 
 \section{Objetivo general}
-label{sec:objetivo-general}
+\label{sec:objetivo-general}
+El objetivo principal de este trabajo es el desarrollo de una aplicación web que sirva a analizar el código fuente de proyectos Python y mostrar los resultados de estos análisis.
+
+\section{Objetivos específicos}
+\label{sec:objetivos-especificos}
+Para alcanzar el objetivo principal se han perseguido los siguientes objetivos específicos:
+\begin{itemize}
+  \item Estudio de las funcionalidades de Coala y de los bears compatibles con Python.
+  \item Examinar resultados de análisis con Coala a partir del fichero JSON generado y mapear estos datos para tratarlos posteriormente.
+  \item Creación de la primera versión de la herramienta capaz de analizar una lista de proyectos Python alojados en GitHub.
+  \item Trasladar la herramienta a la aplicación web con Django, adaptando las vistas y organizando la base de datos para mostrar la información obtenida de forma sencilla.
+  \item Optimización del código y aplicación de mejoras visuales que faciliten el uso de la herramienta de forma que esta sea más rápida y sencilla de utilizar.
+\end{itemize}
 
 
-\section{Objetivos espec�ficos}
-label{sec:objetivos-especificos}
+\section{Planificación temporal}
+\label{sec:planificacion-temporal}
+El presente proyecto surge a partir de otra idea inicial que si bien estaba relacionada, es un tanto distinta. La planificación temporal seguida para la elaboración de este proyecto, teniendo en cuenta que entre hitos he mantenido reuniones con mi tutor, ha sido la siguiente:
 
-
-\section{Planificaci�n temporal}
-label{sec:planificacion-temporal}
-
+\begin{itemize}
+  \item Reunión con el tutor en busca de ayuda y consejo para la elaboración del proyecto. En ella acordamos tomar como base Coala para analizar proyectos Python.
+  \item Estudio de la herramienta Coala, para aprender como se usa, la diferentes funcionalidades, funcionamiento de los bears y ficheros de configuración,... Además del estudio de los resultados del analisis de Coala y los ficheros JSON generados dependiento de la configuración utilizada.
+  \item Definición de la estructura de la base de datos, mapeo de JSON obtenidos y creación de primera versión de la herramienta, con una salida rudimentaria para mostrar los resultados.
+  \item Desarrollo de la aplicación web con Django, llevando el programa principal a las vistas y la estructura de la base de datos a los modelos de Django.
+  \item Mejora de aspecto de la web e inclusion de funcionalidades como búsqueda por URL o fichero, búsqueda de resultados y presentación de datos.
+  \item Optimización de la aplicacion, incluyendo tablas de resumen con enlaces a los resultados para disminuir los tiempos de ejecución de los análisis.
+  \item Elaboración de la memoria.
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -322,28 +301,367 @@ label{sec:planificacion-temporal}
 
 \cleardoublepage
 \chapter{Estado del arte}
+Para la realización de este proyecto me he apoyado en tecnologías ya existentes que serán presentadas en este capítulo, desde la herramienta de análisis con la que se procesa cada proyecto hasta las herramientas utilizadas para mostrar los resultados en la aplicación web.
 
-Descripci�n de las tecnolog�as que utilizas en tu trabajo. Con dos o tres p�rrafos por cada tecnolog�a, vale.
-
-
-Puedes citar libros, como el de Bonabeau et al. sobre procesos estigm�rgicos~\cite{bonabeau:_swarm}. % Nota que el ~ a�ade un espacio en blanco, pero no deja que exista un salto de l�nea. Imprescindible ponerlo para las citas.
-
-Tambi�n existe la posibilidad de poner notas al pie de p�gina, por ejemplo, 
-una para indicarte que visite la p�gina de 
-LibreSoft\footnote{\url{http://www.libresoft.es}}.
-
-\section{Secci�n 1} 
+\section{Coala} 
 \label{sec:seccion1}
+Coala\footnote{\url{https://coala.io/}} es una herramienta que proporciona una interfaz unificada para encontrar y arreglar problemas en el código con un único fichero de configuración (coafile), independientemente del lenguaje de programación utilizado. La herramienta permite obtener los resultados del análisis en un fichero JSON facilmente analizable o personalizarlo acorde a las necesidades.
 
+Coala dispone de un conjunto de plugins denominados 'bears' compatible con diferentes lenguajes de programación incluyendo Python, C/C++, JavaScript, CSS o Java entre otros, además de plugins compatibles con todos los lenguajes.
 
+En el presente proyecto, se ha utilizado Coala para analizar proyectos Python, por lo que sólo se han utilizado bears compatibles con este lenguaje de programación. Una vez ejecutada la herramienta, se ha analizado el fichero JSON generado por Coala.
+
+\subsection{coafile}
+\label{sec:seccion1.1}
+Fichero de configuración\footnote{\url{http://docs.coala.io/en/latest/Users/coafile.html}} de Coala. Se pueden utilizar hasta tres coafiles para configurar la herramienta. 
+
+\begin{itemize}
+  \item Coafile por proyecto: Por convención este fichero es nombrado como '.coafile' y se aloja en  el directorio raíz del proyecto. Con esta convención, solo hay que ejecutar Coala desde el directorio raíz y la herramienta tomará la configuración del fichero.
+
+Los ajustes definidos en este fichero de configuración anulan la configuración dada por el resto de ficheros de configuración y solo pueden ser anulados por aquellas opciones de configuración que introduzcamos por línea de comandos.
+
+El fichero de configuración se puede dividir en secciones y puede contener los bears que vamos a utilizar y las opciones de configuración para cada uno de ellos. Hay que tener en cuenta que la mayor parte de las opciones de configuración de los bears son opcionales, por lo que solo estaremos obligados a incluir aquellas que sean necesarias para realizar el análisis correctamente.
+  \item Coafile por usuario: Este fichero, nombrado como '.coarc', se coloca en el 'home' para establecer los ajustes por defecto del usuario. Estos ajustes serán tomados en cuenta para todos los proyectos que vayan a ser analizados por el usuario. Estos ajustes solo anulan los que sean especificados por el fichero de configuración del sistema.
+  \item Coafile por sistema: Es el fichero de configuración de más baja prioridad. El denominado 'default\_coafile' debe situarse en el directorio de instalación de Coala y es válido para todos los usuarios que utilicen Coala en el sistema.
+\end{itemize}
+
+\subsection{Bears}
+\label{sec:seccion1.2}
+Los bears\footnote{\url{https://coala.io/#!/languages}} son los plugins utilizados por Coala para análizar código. Actualmente cuenta con 78 bears que cubren un total de 54 lenguajes de programación.
+
+\subsubsection{BanditBear}
+\label{sec:seccion1.2.1}
+Con este bear se analiza el código Python en busca de los problemas de seguridad mas comunes con la herramienta Bandit\footnote{\url{https://github.com/openstack/bandit}}. Bandit procesa cada uno de los ficheros, construye un AST\footnote{\url{https://docs.python.org/2/library/ast.html}} y ejecuta los plugins adecuados contra los nodos AST y genera un informe. La herramienta cuenta con una lista de test que se identifican mediante un ID.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item BANDIT\_SKIPPED\_TESTS: De manera opcional, podemos indicar en el fichero de configuración el ID de los test que no queramos ejecutar. Por defecto, este bear no ejecuta los plugin: B105  hardcoded\_password\_string, B106  hardcoded\_password\_funcarg, B107  hardcoded\_password\_default, B404  import\_subprocess, B603  subprocess\_without\_shell\_equals\_true, B606  start\_process\_with\_no\_shell y B607  start\_process\_with\_partial\_path
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{FilenameBear}
+\label{sec:seccion1.2.2}
+Este bear se puede aplicar a cualquier lenguaje de programación. Comprueba que el nombre de los ficheros siguen una convención.
+
+\begin{itemize}
+  \item Lenguajes: Todos
+  \item Configuración
+    \begin{itemize}
+          \item FILE\_NAMING\_CONVENTION: De manera opcional, se puede indicar una de las siguientes convenciones de nombrado: camel (thisIsCamelCase) - pascal (ThisIsPascalCase) - snake (this\_is\_snake\_case) - space (This Is Space Case). Por defecto, elige “snake”.
+          \item IGNORE\_UPPERCASE\_FILENAMES: De manera opcional, se puede indicar si se quiere ignorar los nombres de fichero completamente en mayúsculas. Por defecto se ignoran.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{InvalidLinkBear}
+\label{sec:seccion1.2.3}
+Busca enlaces en los ficheros y comprueba si son válidos. Considera válido el enlace si el servidor responde con un código 2xx. Este bear hará peticiones HEAD a todas las URL del fichero, por lo que es potencialmente peligroso si el código contiene URLs que no deben ser visitadas. Por ejemplo, si el fichero contiene una línea como la siguiente do\_not\_ever\_open = 'https://api.acme.inc/delete-all-data', este bear la visitará, borrando todos los datos.
+
+\begin{itemize}
+  \item Lenguajes: Todos
+  \item Configuración
+    \begin{itemize}
+          \item NETWORK\_TIMEOUT o TIMEOUT: Se trata de un dict\footnote{\url{https://docs.python.org/2/library/stdtypes.html#typesmapping}} mapeando URLs y tiempos de espera para cada enlace. Las URLs con el mismo host que las contenidas en el dict, esperaran el tiempo indicado. También puede contener un campo comodín con la clave ‘*’ para el resto de URLs. Es opcional y por defecto viene vacío.
+          \item LINK\_IGNORE\_REGEX o IGNORE\_REGEX: Una expresión regular para identificar las URLs a ignorar. Es opcional y tiene un valor por defecto para URLs del tipo "example.com".
+          \item LINK\_IGNORE\_LIST: Lista de URLs a ignorar. Es opcional y por defecto está vacía.
+          \item FOLLOW\_REDIRECTS: Si está en ‘True’ corrige los enlaces con errores, pero ignora las URLs que son muy diferentes a la URL original.  Es opcional y por defecto su estado es ‘False’.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{MypyBear}
+\label{sec:seccion1.2.4}
+Comprueba la escritura estática usando la herramienta Mypy\footnote{\url{http://mypy.readthedocs.io/en/latest/basics.html}}. La herramienta chequea el código en busca de los errores de tipado mas comunes. Estas anotaciones referentes al tipo dentro del código no interfiren al ejecutar el programa al tratarse de un analizador estático.
+
+Mypy puede comprobar que el código sigue las reglas básicas de anotaciones basadas en comentarios para Python 2 y Python 3 (utilizando PEP 484\footnote{\url{https://www.python.org/dev/peps/pep-0484/}}).
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item LANGUAGE: Con “Python” o “Python 3”, chequea código Python 3.x, mientras que la opción “Python 2” chequea código en Python 2.x. Es opcional y la opción por defecto es “Python 3”.
+          \item ALLOW\_UNTYPED\_FUNCTIONS: Si su valor es “True”, permite funciones sin anotaciones de tipo con con anotaciones de tipo incompletas. Por defecto el valor es “True”.
+          \item STRICT\_OPTIONAL: Habilita chequeo estrictos relacionados con tipos opcionales, comprobando que no se intentan realizar operaciones no admitidas en valores “None” o que no se utilizan valores “None” cuando se espera un valor no opcional. Esta característica aún es experimental\footnote{\url{http://mypy-lang.blogspot.com.es/2016/07/mypy-043-released.html}}. Es opcional y por defecto su valor es “False”.
+          \item PYTHON\_VERSION: Permite especificar la versión de Python concreta. Es opcional y por defecto su valor es “None”.
+          \item CHECK\_UNTYPED\_FUNCTION\_BODIES: Permite no chequear el interior de las funciones que no tenga anotaciones de tipo. Es opcional y por defecto su valor es “False”.
+          \item ALLOW\_UNTYPED\_CALLS: Permite la llamada a funciones sin anotaciones de tipo desde funciones tipadas. Es opcional y por defecto su valor es “True”.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PEP8Bear}
+\label{sec:seccion1.2.5}
+Detecta y corrige código que no cumpla con las normas de la guía de estilo para Python (PEP8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}). Este bear no modifica la funcionalidad del código de ninguna manera.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item MAX\_LINE\_LENGTH: Permite definir el número máximo de caracteres por línea. Es opcional y por defecto son 79.
+          \item INDENT\_SIZE o TAB\_WIDTH: Permite definir el número de espacios para cada nivel de indentación. Es opcional y por defecto 4.
+          \item PEP\_IGNORE: Lista de errores o advertencias a ignorar. Es opcional y por defecto aparece vacío.
+          \item PEP\_SELECT: Lista de errores o advertencias para aplicar exclusivamente. Es opcional y por defecto aparece vacío.
+          \item LOCAL\_PEP8\_CONFIG: Si está a “True”, autopep8\footnote{\url{https://pypi.python.org/pypi/autopep8}} (usado para corregir el codigo para que cumpla con la guia de estilo) deberá usar un fichero de configuración indicado. Es opcional y por defecto su valor es “False”.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PyCommentedCodeBear}
+\label{sec:seccion1.2.6}
+Detecta código fuente comentado en Python. No tiene opciones de configuración.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+\end{itemize}
+
+\subsubsection{PycodestyleBear}
+\label{sec:seccion1.2.7}
+Analiza el código con la herramienta Pycodestyle\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/}}, formalmente conocida como PEP8. Sirve para chequear que el código sigue las convenciones de estilo definidas para Python en PEP8.
+
+Pycodestyle permite agregar nuevas normas de forma sencilla gracias a su estructura, su salida es parseable, es ligero y contiene una completa suite de pruebas. Actualmente consta de un completo listado\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes}} de códigos de error y advertencia. Hay que tener en cuenta que en la configuración por defecto, se ignoran los códigos E121, E123, E126, E133, E226, E241, E242, E704 y W503, ya que se corresponden con reglas que no están aceptadas de forma unánime y PEP8 no obliga a que sean cumplidas. El código E133 es mutuamente exclusivo con el código E123.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item MAX\_LINE\_LENGTH: Permite definir el número máximo de caracteres por línea. Es opcional y por defecto son 79.
+          \item PYCODESTYLE\_IGNORE: Lista con los errores a ignorar de entre todos los códigos\footnote{\url{http://www.pydocstyle.org/en/latest/error_codes.html}}. Es opcional y por defecto está vacío.
+          \item PYCODESTYLE\_SELECT: Lista con los errores a detectar de entre todos los códigos. Es opcional y por defecto está vacío.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PyFlakesBear}
+\label{sec:seccion1.2.8}
+Analiza las ficheros Python en busca de errores con la herramienta PyFlakesBear\footnote{\url{https://github.com/PyCQA/pyflakes}}, que puede detectar problemas de sintaxis, codigo sin uso y elementos indefinidos.
+
+Es una herramienta que no tiene en cuenta el estilo. Es mas limitado que otras herramientas debido a que sólo examina el arbol de sintaxis de los archivos de forma individual, pero esta característica también lo hace más rápido. No tiene disponibles opciones de configuración con coala.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 3
+\end{itemize}
+
+\subsubsection{PyImportSortBear}
+\label{sec:seccion1.2.9}
+Detecta los casos relacionados con la forma en que se ordenan los imports y es capaz de añadir comentarios basados en las muchas opciones de configuración que posee. Se basa en la herramienta isort\footnote{\url{https://isort.readthedocs.io/en/latest/}}, que se usa para ordenar los imports alfabeticamente y ordenarlos por sección.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item USE\_PARENTHESES\_IN\_IMPORT:"True" si se utilizarán paréntesis en la declaración de los imports. Es opcional y por defecto es "True".
+          \item FORCE\_ALPHABETICAL\_SORT\_IN\_IMPORT: Si su valor es "True", fuerza a que todos los imports sean ordenados en una sola sección, en lugar de estar dentro de otros grupos. Es opcional y por defecto es "False".
+          \item FORCE\_SORT\_WITHIN\_IMPORT\_SECTIONS: Si su valor es "True", los imports estarán ordenados según su sección sin importar el tipo. Es opcional y por defecto es "True".
+          \item FROM\_FIRST\_IN\_IMPORT: Si es "True", los imports usando "from" se muestran encima del resto. Es opcional y por defecto es "False".
+          \item INCLUDE\_TRAILING\_COMMA\_IN\_IMPORT: Si es "True" añadirá una coma final a los imports. Ejemplo: "from abc import (a,b,c,)". Es opcional y por defecto es "False".
+          \item COMBINE\_STAR\_IMPORTS: Si es "True", se asegura de que haya un import *, y nada mas es importado desde ese namespace. Es opcional y por defecto es "True".
+          \item COMBINE\_AS\_IMPORTS: Si es "True", isort combinará los imports dentro de la misma línea para las declaraciones de import. Es opcional y por defecto  es "True".
+          \item LINES\_AFTER\_IMPORTS: Fuerza que haya un cierto número de líneas despues de la declaración de los imports y antes de la primera línea funcional de código. Por defecto es "-1", que utuliza 2 líneas si la primera línea de código es una clase o función y una línea para el resto de casos.
+          \item ORDER\_IMPORTS\_BY\_TYPE: Si es "True", isort crea secciones separadas dentro de los "from" para constantes, clases y módulos/funciones. Es opcional y por defecto es "False".
+          \item BALANCED\_WRAPPING\_IN\_IMPORTS: Si es "True", para cada import multi-línea isort ajustará dinamicamente la longitud del import a una que guarde el equilibrio con la máxima longitud definida. Es opcional y por defecto es "False".
+          \item IMPORT\_HEADING\_LOCALFOLDER: Comentario colocado encima de los imports que comienza por ".". Es opcional y por defecto está vacío.
+          \item IMPORT\_HEADING\_FIRSTPARTY: Comentario colocado encima de los imports del proyecto. Es opcional y por defecto está vacío.
+          \item IMPORT\_HEADING\_THIRDPARTY: Comentario colocado encima de los imports de terceros. Es opcional y por defecto está vacío.
+          \item IMPORT\_HEADING\_STDLIB: Comentario colocado encima de los imports de la librería estandar. Es opcional y por defecto está vacío.
+          \item IMPORT\_HEADING\_FUTURE: Comentario colocado encima de futuros imports. Es opcional y por defecto está vacío.
+          \item DEFAULT\_IMPORT\_SECTION: Sección por defecto para colocar los imports si su sección no puede ser determinada automaticamente. Es opcional y por defecto es "FIRSTPARTY".
+          \item FORCE\_GRID\_WRAP\_IMPORTS: Fuerza a los "from" a estar dentro de la cuadrícula independientemente de la longitud de línea. Es opcional y por defecto es "False".
+          \item FORCE\_SINGLE\_LINE\_IMPORTS: Si es "True", cada import es forzado a mostrarse en una sola línea en lugar de tener imports multi-línea. Es opcional y por defecto es "True".
+          \item SORT\_IMPORTS\_BY\_LENGTH: Ordena los imports por longitud en lugar de alfabeticamente. Es opcional y por defecto es "False".
+          \item USE\_SPACES: Será "True" para utilizar espacios en lugar de tabulaciones. Es opcional y por defceto es "True".
+          \item INDENT\_SIZE: Número de espacios por nivel de indentación. Es opcional y por defecto es 4.
+          \item FORCED\_SEPARATE\_IMPORTS: Lista de módulos que deseamos que aparezcan en una sección propia. Es opcional y por defecto está vacía.
+          \item ISORT\_MULTI\_LINE\_OUTPUT\footnote{\url{https://isort.readthedocs.io/en/latest/#multi-line-output-modes}}: Entero que representa como se muestran los imports si no son lo suficientemente largos como para mostrarse en múltiples líneas. Es opcional y por defecto su valor es 4 (vert-grid).
+          \item KNOWN\_FIRST\_PARTY\_IMPORTS: Lista de imports que está forzado a mostrar dentro de los imports del proyecto. Es opcional y por defecto está vacía.
+          \item KNOWN\_THIRD\_PARTY\_IMPORTS: Lista de imports que está forzado a mostrar dentro de la categoría de imports de terceros. Es opcional y por defecto está vacía.
+          \item KNOWN\_STANDARD\_LIBRARY\_IMPORTS: Lista de imports que está forzado a mostrar dentro de la categoría estandar de imports. Es opcional y por defecto está vacía.
+          \item MAX\_LINE\_LENGTH: Máximo número de caracteres por línea. Es opcional y por defecto es 79.
+          \item IMPORTS\_FORCED\_TO\_TOP: Fuerza a que la lista de imports aparezca encima de su respectiva sección. Es opcional y por defecto está vacía.
+          \item TAB\_WIDTH: Número de espacios por nivel de indentación. Es opcional y por defecto es 4.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PyLintBear}
+\label{sec:seccion1.2.10}
+Chequea el código con PyLint\footnote{\url{https://www.pylint.org/}}, ejecutándolo para cada fichero por separado. PyLint detecta errores de sintaxis, código no usado, errores de formato, duplicidad y problemas de seguridad, gracias al amplio listado de chequeos\footnote{\url{http://pylint-messages.wikidot.com/all-messages}} que lleva a cabo.
+
+La herramienta cuenta con un listado de errores\footnote{\url{http://pylint-messages.wikidot.com/all-codes}} que serán mostrados por coala.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item PYLINT\_DISABLE: Inhabilita los mensajes, reportes, categoria o chequeos correspondientes a las IDs dadas. Es opcional y por defecto es una lista vacía.
+          \item PYLINT\_ENABLE: Habilita los mensajes, reportes, categoria o chequeos correspondientes a las IDs dadas. Es opcional y por defecto es una lista vacía.
+          \item PYLINT\_RCFILE: Especifica el RCFile\footnote{\url{https://en.wikipedia.org/wiki/RCFile}} para PyLint. Es opcional y por defecto está vacío.
+          \item PYLINT\_CLI\_OPTIONS: Opciones por línea de comandos que se quieran pasar a PyLint. Es opcional y por defecto está vacío.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PyUnusedCodeBear}
+\label{sec:seccion1.2.11}
+Detecta código en desuso. Por defecto está limitado a declaraciones 'pass' e imports innecesarios.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item REMOVE\_ALL\_UNUSED\_IMPORTS: Si es "True", elimina todos los imports que no se utilizan. Puede tener efectos secundarios. Es opcional y por defecto es "False".
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PyDocStyleBear}
+\label{sec:seccion1.2.12}
+Comprueba la semántica y convenciones relacionadas con los docstrings\footnote{\url{https://www.python.org/dev/peps/pep-0257}} de Python.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item PYDOCSTYLE\_SELECT: Lista que especifica los errores que se van a chequear. No puede usarse a la vez que 'PYDOCSTYLE\_IGNORE'. Es opcional y por defecto está vacío.
+          \item PYDOCSTYLE\_IGNORE: Lista que especifica los errores que se van a ignorar. No puede usarse a la vez que 'PYDOCSTYLE\_SELECT'. Es opcional y por defecto está vacío.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PyromaBear}
+\label{sec:seccion1.2.13}
+Comprueba que se llevan a cabo buenas prácticas en lo referente al empaquetado utilizando Pyroma\footnote{\url{https://github.com/regebro/pyroma}}. La herramienta Pyroma está desrtinada a calificar como de bien cumple con las mejores prácticas un proyecto Python, así como un listado con puntos que podrian ser mejorados.
+
+Pyroma puede ayudar a diseñar un proyecto agradable y facilmente utiizable, así como mejorar el software Python de terceros.
+
+No cuenta con opciones de configuración en Coala.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 3
+\end{itemize}
+
+\subsubsection{RadonBear}
+\label{sec:seccion1.2.14}
+Radon sirve para calcular la complejidad de un fichero dado.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 2, Python 3
+  \item Configuración
+    \begin{itemize}
+          \item RADON\_RANKS\_INFO: Categorias, dadas por Radon, para tratar la gravedad INFO. Es opcional y por defecto es una lista vacía.
+          \item RADON\_RANKS\_NORMAL: Categorias, dadas por Radon, para tratar la gravedad NORMAL. Es opcional y por defecto es '('C', 'D')'.
+          \item RADON\_RANKS\_MAJOR:Categorias, dadas por Radon, para tratar la gravedad MAJOR. Es opcional y por defecto es '('E', 'F')'.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{VultureBear}
+\label{sec:seccion1.2.15}
+Chequea el código Python utilizando Vulture\footnote{\url{https://github.com/jendrikseipp/vulture}}. Esta herramienta busca en el código clases, funciones y variables que no son utilizadas, lo que ayuda a limpiar y encontrar errores en el código.
+
+Aunque Vulture es una herramienta muy útil, hay que tener en cuenta una serie de consideraciones. Debido a la naturaleza dinámica de Python, los analizadores de código estáticos como Vulture probablemente pueden saltarse partes del código en desuso. Además, el código que solo es llamado implicitamente puede ser reportado como código no utilizado.
+
+No cuenta con opciones de configuración en Coala.
+
+\begin{itemize}
+  \item Lenguajes: Python, Python 3
+\end{itemize}
+
+\subsubsection{coalaBear}
+\label{sec:seccion1.2.16}
+Comprueba que la ortografía de 'coala' es correcta dentro del código. No cuenta con opciones de configuración.
+
+\begin{itemize}
+  \item Lenguajes: Todos
+\end{itemize}
+
+\subsubsection{SpaceConsistencyBear}
+\label{sec:seccion1.2.17}
+Comprueba y corrige el espaciado. Incluye el uso de tabulaciones en lugar de espacios, espacios en blanco a la izquierda o al final de la línea y las nuevas líneas de texto que falten al final del fichero.
+
+\begin{itemize}
+  \item Lenguajes: Todos
+  \item Configuración
+    \begin{itemize}
+          \item ALLOW\_TRAILING\_WHITESPACE: Si es "True", se permiten espacios o tabulaciones después del último caracter que no sea un espacio en blanco en la línea antes del salto de línea. Es opcional y por defecto es "False".
+          \item INDENT\_SIZE: Número de espacios por nivel de indentación. Es opcional y por defecto es 4.
+          \item ENFORCE\_NEWLINE\_AT\_EOF: Fuerza o no a que haya una nueva línea al final del fichero. Es opcional y por defecto es "True".
+          \item TAB\_WIDTH: Número de espacios por tabulación. Es opcional y por defecto es 4.
+          \item USE\_SPACES: Si es "True", deben usarse espacios en lugar de tabulaciones. Es obligatorio.
+    \end{itemize}
+\end{itemize}
+
+\section{Python} 
+\label{sec:seccion2}
+Python\footnote{\url{https://www.python.org}} es un lenguaje de programación de código abierto optimizado para la calidad, productividad, portabilidad e integración creado a finales de los ochenta por Guido van Rossum~\cite{lutz:_programming_python}~\cite{beazley:_essential_reference}. Sus principales características son:
+
+\begin{itemize}
+  \item Lenguaje de alto nivel: automatiza la mayoría de las tareas a bajo nivel y hace hincapié en que su sintaxis sea sencilla, de forma que se adapta de forma adecuada a la capacidad cognitiva humana.
+  \item Interpretado: de forma que solo necesita de un interprete para ser ejecutado directamente, sin necesidad de compilador.
+  \item Multiparadigma: soporta más de un paradigma de programación, es decir, permite programar utilizando más de un estilo de programación (orientada a objetos, funcional, dinámica,...)
+  \item Tipado dinámico: una variable puede tomar valores de distinto tipo en distinto momento. Los tipos se asignan en tiempo de ejecución y no es necesario declararlos con la variable.
+\end{itemize}
+
+Python ha sido utilizado en todo el proyecto debido a su facilidad de uso y su compatibilidad con DJANGO. Además, se trata de un lenguaje ampliamente utilizado y que cuenta con mucho material de apoyo.
+
+\section{Django} 
+\label{sec:seccion3}
+Django~\cite{django:_django}~\cite{bennet:_django} es un entorno de trabajo de alto nivel diseñado para alentar un desarrollo rápido y limpio, dando prioridad a un diseño pragmático. Con este entorno de trabajo solo hay que preocuparse de desarrollar la aplicación, sin preocuparse de las consideraciones generales del desarrollo de aplicaciones web. Es un entorno versátil, flexible, rapidamente escalable, gratuito y de código abierto.
+
+Django está diseñado para ayudar a los desarrolladores a llevar sus apliaciones desde el concepto hasta su terminación lo más rápido posible. Incluye docenas de extras que podemos utilizar para manejar las tareas más comunes del desarrollo web, tales como autenticación de usuarios o administración de contenidos entre otros.
+
+Otro de los aspectos importantes de Django es la seguridad. Django ayuda a evitar errores de seguridad comunes como la inyección de SQL, cross-site scripting\footnote{\url{http://www.cgisecurity.com/xss-faq.html#whatis}}, etc... Su sistema de autenticación de usuarios proporciona una forma segura de administrar cuentas de usuario y contraseñas.
+
+He utilizado Django para desarrollar la aplicación por su facilidad a la hora de crear las vistas y el interfaz web con en el que se interactúa con la aplicación. Adicionalmente, con Django se simplifica considerablemente el manejo de bases de datos, un aspecto muy importante de este proyecto.
+
+\section{GitHub} 
+\label{sec:seccion4}
+GitHub\footnote{\url{https://github.com/}} es una plataforma donde se almacenan repositorios, utilizando el control de versiones Git. Una de sus principales características es el desarrollo colaborativo. Cada proyecto tiene su página web, la posibilidad de hacer ramificaciones (forks), contorl de versiones, wikis, gestión de errores y la posibilidad de que otros desarrolladores colaboren en el proyecto.
+
+En la realización de este proyecto he utilizado la plataforma para obtener proyectos Python que analizar, clonados en local con Git, así como para almacenar tanto la aplicación como la memoria del proyecto. De este modo, ambos son públicos y están disponibles para su consulta o contribuciones de otros desarrolladores.
+
+\section{Git} 
+\label{sec:seccion5}
+Git~\cite{git:_git} es un sistema de control de versiones que sirve para gestionar los cambios que sufre un proyecto durante su desarrollo. Una vez añadimos los elementos que debe gestionar, podemos hacer los cambios necesarios y estos quedaran registrados, manteniendo un registro histórico de las acciones que realicemos y contando con la posibilidad de volver a un estado anterior del proyecto.
+
+Se trata de una de las principales herramientas de control de versiones. Se ha utilizado en la realización de este proyecto tanto para clonar los proyectos Python que analiza la herramienta, a partir de las URLs de los proyectos en GitHub, como para llevar el control del propio proyecto.
+
+\section{HTML} 
+\label{sec:seccion6}
+HTML (HyperText Markup Language)\footnote{\url{https://www.w3.org/html/}} es el lenguaje de marcado estándar utilizado para la creación de páginas web y sus elementos forman los bloques de construcción de todas las páginas web.~\cite{robson:_html_css}
+
+En el presente proyecto se ha utilizado para la creación de las diferentes páginas web que muestra Django y con las que interactúa el usuario para analizar o ver la información alamacenada sobre los proyectos.
+
+\section{BootStrap} 
+\label{sec:seccion7}
+BootStrap\footnote{\url{https://getbootstrap.com/}} es un framework de código abierto desarrollado originalmente por diseñadores y desarrolladores de Twitter en 2010. Sirvió para el desarrollo de herramientas internas en la empresa durante más de un año, hasta que fué lanzado públicamente en 2011.
+
+La herramienta consta de una colección de elementos personalizables y funciones para facilitar el diseño de páginas web. Hace uso de CSS, elementos HTML diseñados y mejorados con clases extensibles, un sistema avanzado de cuadrícula, componentes reutilizables como iconos o listas desplegables y JavaScript.
+
+BootStrap se puede utilizar de diferentes formas, pero en este caso he descargado la versión precompilada, que permite hacer un uso rápido de ella con las fuentes que incluye, y la versión precompilada de su CSS y JavaScript. Además, he usado la plantilla 'Bootstrap theme' para la creación de las 12 páginas diferentes con las que cuenta el proyecto, añadiendo o eliminando los elementos necesarios para mostrar la información necesaria.
+
+\section{CSS} 
+\label{sec:seccion8}
+CSS (Cascading Style Sheets) permite definir la forma en la que muestra un contenido, facilitando a los desarrolladores el control sobre el formato y estilo de los documentos.~\cite{robson:_html_css}
+
+La principal caraterística de CSS es que permite separar el contenido de la presentacion. Un desarrollador puede controlar el formato y estilo de muchas páginas al mismo tiempo, ya que todas las páginas reflejaran el aspecto marcado en el CSS.
+    
+En este documento se utiliza CSS como parte de BootStrap, haciendo uso de las clases definidas por esta herramienta para mejorar la presentación de la aplicación web.
+
+\section{JavaScript} 
+\label{sec:seccion9}
+JavaScript\footnote{\url{https://developer.mozilla.org/es/docs/Web/JavaScript}} es un lenguaje ligero e interpretado. Está orientado a objetos, es un lenguaje script multi-paradigma, basado en prototipos, dinámico e imperativo. Puede decirse que es el lenguaje de programación de las webs, aunque también es utilizado en otros entornos.
+
+JavaScript sirve para especificar el comportamiento de las páginas web, y forma parte de la 'triada' de tecnologías básicas para el desarrollo web junto con HTML y CSS.~\cite{flanagan:_js}
+
+En este proyecto se ha utilizado JavaScript para ocultar o mostrar parte del contenido de las páginas. A la hora de mostrar la información de un proyecto o fichero, o tras analizar una lista de ellos, se presenta toda la información del mismo y gracias a JavaScript podemos ocultar parte de la misma para poder tener soo una visión global.
+
+\section{JSON} 
+\label{sec:seccion10}
+JSON\footnote{\url{http://www.json.org/}} (JavaScript Object Notation) es un formato de texto ligero para el intercambio de datos. Es sencillo de leer e interpretar para humanos y puede ser fácilmente generado e interpretado por máquinas. Además, es un formato de texto totalmente independiente del lenguaje de programación y está formado por estructuras universales que son soportadas por todos ellos, por lo que es el lenguaje ideal para el intercambio de datos.
+
+JSON está constituido por dos estructuras: una colección de pares nombre/valor y una lista ordenada de valores.
+
+En este proyecto se ha utilizado JSON como formato de salida de los análisis con Coala. Al tratarse de estructuras básica y facilmente interpretables, es perfecto para su posterior análisis e inclusión de resultados en la base de datos una vez hecho el mapeo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DISE�O E IMPLEMENTACI�N %
+% DISEÑO E IMPLEMENTACIÓN %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\chapter{Dise�o e implementaci�n}
+\chapter{Diseño e implementación}
 
 \section{Arquitectura general} 
 \label{sec:arquitectura}
@@ -353,7 +671,7 @@ figura~\ref{fig:arquitectura}.
 \begin{figure}
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/arquitectura}
-  \caption{Estructura del parser b�sico}
+  \caption{Estructura del parser básico}
   \label{fig:arquitectura}
 \end{figure}
 
@@ -379,23 +697,23 @@ figura~\ref{fig:arquitectura}.
 \label{chap:conclusiones}
 
 
-\section{Consecuci�n de objetivos}
+\section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
 
-Esta secci�n es la secci�n espejo de las dos primeras del cap�tulo de objetivos,
-donde se planteaba el objetivo general y se elaboraban los espec�ficos.
+Esta sección es la sección espejo de las dos primeras del capítulo de objetivos,
+donde se planteaba el objetivo general y se elaboraban los específicos.
 
-Es aqu� donde hay que debatir qu� se ha conseguido y qu� no. Cuando algo no
-se ha conseguido, se ha de justificar, en t�rminos de qu� problemas se han
-encontrado y qu� medidas se han tomado para mitigar esos problemas.
+Es aquí donde hay que debatir qué se ha conseguido y qué no. Cuando algo no
+se ha conseguido, se ha de justificar, en términos de qué problemas se han
+encontrado y qué medidas se han tomado para mitigar esos problemas.
 
 
-\section{Aplicaci�n de lo aprendido}
+\section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
 
-Aqu� viene lo que has aprendido durante el Grado/M�ster y que has aplicado
-en el TFG/TFM. Una buena idea es poner las asignaturas m�s relacionadas y
-comentar en un p�rrafo los conocimientos y habilidades puestos en pr�ctica.
+Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado
+en el TFG/TFM. Una buena idea es poner las asignaturas más relacionadas y
+comentar en un párrafo los conocimientos y habilidades puestos en práctica.
 
 \begin{enumerate}
   \item a
@@ -406,7 +724,7 @@ comentar en un p�rrafo los conocimientos y habilidades puestos en pr�ctica.
 \section{Lecciones aprendidas}
 \label{sec:lecciones_aprendidas}
 
-Aqu� viene lo que has aprendido en el Trabajo Fin de Grado/M�ster.
+Aquí viene lo que has aprendido en el Trabajo Fin de Grado/Máster.
 
 \begin{enumerate}
   \item a
@@ -417,24 +735,24 @@ Aqu� viene lo que has aprendido en el Trabajo Fin de Grado/M�ster.
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
 
-Ning�n software se termina, as� que aqu� vienen ideas y funcionalidades
-que estar�a bien tener implementadas en el futuro.
+Ningún software se termina, así que aquí vienen ideas y funcionalidades
+que estaría bien tener implementadas en el futuro.
 
 Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
 
 
-\section{Valoraci�n personal}
+\section{Valoración personal}
 \label{sec:valoracion}
 
 Finalmente (y de manera opcional), hay gente que se anima a dar su punto de
-vista sobre el proyecto, lo que ha aprendido, lo que le gustar�a haber aprendido,
-las tecnolog�as utilizadas y dem�s.
+vista sobre el proyecto, lo que ha aprendido, lo que le gustaría haber aprendido,
+las tecnologías utilizadas y demás.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% AP�NDICE(S) %
+% APÉNDICE(S) %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
@@ -454,11 +772,15 @@ las tecnolog�as utilizadas y dem�s.
 % para incluir las citas en la memoria
 \bibliographystyle{abbrv}
 \bibliography{memoria}  % memoria.bib es el nombre del fichero que contiene
-% las referencias bibliogr�ficas. Abre ese fichero y mira el formato que tiene,
+% las referencias bibliográficas. Abre ese fichero y mira el formato que tiene,
 % que se conoce como BibTeX. Hay muchos sitios que exportan referencias en
 % formato BibTeX. Prueba a buscar en http://scholar.google.com por referencias
-% y ver�s que lo puedes hacer de manera sencilla.
-% M�s informaci�n: 
+% y verás que lo puedes hacer de manera sencilla.
+% Más información: 
 % http://texblog.org/2014/04/22/using-google-scholar-to-download-bibtex-citations/
 
 \end{document}
+\grid
+\grid
+\grid
+\grid

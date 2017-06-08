@@ -170,15 +170,20 @@ no sea para siempre, pero tu madre sí.
 Este proyecto tiene como objetivo la creación de una aplicación web para el análisis de
 proyectos de GitHub con coala. Este análisis puede dar una idea acerca de la calidad de
 los proyectos analizados, ya que a través de los diferentes bears con los que cuenta, es
-capaz de detectar un gran número de problemas en el código y mostrar de forma clara y ordenada
-estos resultados.
+capaz de detectar un gran número de problemas tanto en el código como en el proyecto en si mismo
+y mostrarlos de forma clara y ordenada.
 
-La aplicación web se ha desarrollado con Python, utilizando DJANGO para la interfaz web
-y tecnologias como Coala, BootStrap, CSS, HTML y JavaScript. El proyecto está enfocado al
-análisis de proyectos Python alojados en GitHub, aunque con unos pequeños cambios podría ser
-utilizado para analizar código de cualquier otro de los muchos lenguajes de programación que
-soporta coala.
+El diseño está basado en el modelo cliente-servidor, de modo que aunque ambos puedan estar
+alojados en la misma máquina, existe una separación que permite por un lado centrarse en la
+lógica de la aplicación y por otro en la presentación de los resultados.
 
+La aplicación web se ha desarrollado con Python, utilizando DJANGO y tecnologias como Coala, 
+BootStrap, CSS, HTML, JSON y JavaScript. El proyecto está enfocado al análisis de proyectos 
+Python alojados en GitHub, aunque con unos pequeños cambios podría ser utilizado para analizar 
+código de cualquier otro de los muchos lenguajes de programación que soporta coala.
+
+Los datos obtenidos tras el análisis con Coala se almacenan en una base de datos que el usuario
+puede consultar a través de la página de la aplicación y utilizar las diferentes funcionalidades.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen en inglés
 
@@ -665,7 +670,7 @@ En este proyecto se ha utilizado JSON como formato de salida de los análisis co
 
 \section{Arquitectura general} 
 \label{sec:seccion11}
-La aplicación desarrollada está basada en el modelo cliente-servidor. En este modelo, las cada una de las partes ejecuta acciones diferentes: el cliente realiza peticiones a la aplicación a través de la interfaz web; y el servidor atiende estas peticiones y da una respuesta al cliente. Además, hay que tener el cuenta que algunas de las peticiones, sino todas, las peticiones conllevan el acceso a la base de datos, ya sea para almacenar o extraer información.
+La aplicación desarrollada está basada en el modelo cliente-servidor. En este modelo, las cada una de las partes ejecuta acciones diferentes: el cliente realiza peticiones a la aplicación a través de la interfaz web; y el servidor atiende estas peticiones y da una respuesta al cliente. Además, hay que tener el cuenta que la mayoría de las peticiones, sino todas, conllevan el acceso a la base de datos, ya sea para almacenar o extraer información.
 
 Aunque cliente y servidor pueden estar alojados en la misma máquina, existe una separación lógica entre ambas partes.
 
@@ -677,7 +682,8 @@ En el servidor es donde tenemos la aplicación en sí. Django dispone de un serv
 
 A la hora de lanzar el servidor, Django permite elegir la IP y puerto en el que debe escuchar, pero se decidió utilizar la configuración por defecto: 'localhost:8000', y todas las funcionalidades de la herramienta colgarán de 'localhost:8000/analyzer'.
 
-Toda la lógica de la aplicación se encuentra en el fichero views.py. El cliente realiza una petición al servidor mediante la solicitud de una URL. La petición llega al controlador, que consulta en el fichero urls.py la vista asociada a esa URL y se hace la llamada a esa vista del fichero views.py. En este momento se ejecutan las acciones definidas en la vista y se consulta o actualiza la base de datos dependiendo de la accion concreta. Finalmente, una se renderiza la página web a partir del template definido para cada caso y se envia al navegador mediante HTTP para que el cliente visualice el resultado de la consulta.
+Toda la lógica de la aplicación se encuentra en el fichero views.py. El cliente realiza una petición al servidor mediante la solicitud de una URL. La petición llega al controlador, que consulta en el fichero urls.py la vista asociada a esa URL y se hace la llamada a esa vista del fichero views.py. En este momento se ejecutan las acciones definidas en la vista y se consulta o actualiza la base de datos dependiendo de la accion concreta. Finalmente, se renderiza la página web a partir del template definido para cada caso y se envia al navegador mediante HTTP para que el cliente visualice el resultado de la consulta.
+
 
 \subsection{Cliente}
 \label{sec:seccion11.2}
@@ -688,7 +694,7 @@ Algunas templates utilizados en este proyecto cuentan con código JavaScript que
 \subsection{Base de datos}
 \label{sec:seccion11.3}
 La base de datos o el modelo como se conoce en Django, se define en el fichero models.py dentro de nuestro proyecto como muestra la figura~\ref{fig:EstructuraBBDD}.
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/EstructuraBBDD}
   \caption{Estructura de la base de datos utilizada}
@@ -707,7 +713,7 @@ El servidor se encarga de procesar las peticiones y mostrar la información al c
 Una de las principales características de la aplicación es el análisis de proyectos. Para hacer este análisis, existen dos posibilidades que el cliente puede elegir dentro del la página de análisis: hacer el análisis de un solo proyecto a partir de la URL del proyecto alojado en GitHub o hacer un análisis masivo de proyectos desde un fichero de texto que contenga las URLs.
 
 Cuando queremos analizar un solo fichero a partir de su URL, la aplicación se comporta según el diagrama de la figura~\ref{fig:AnalizarURL}.
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=7cm, keepaspectratio]{img/AnalizarURL}
   \caption{Diagrama de flujo en el análisis de proyectos por URL}
@@ -726,7 +732,7 @@ Una vez descargado el proyecto, se analiza con Coala. Como solo vamos a analizar
 \end{verbatim}
 }
 
-Donde 'python\_files' son los ficheros con extensión '.py' y 'settings.CONSTANTS['jsonFile']' es la ruta definida en el fichero 'settings' de Django para almacenar el fichero JSON con los datos del análisis. En este punto se lee el fichero JSON, se extraen los datos siguiendo el mapeo definido y se almacena todo en la base de datos. Finalmente, se monta el código HTML sobre la plantilla y se envía para mostrar la información.
+Donde 'python\_files' son los ficheros con extensión '.py' y 'settings.CONSTANTS['jsonFile']' es la ruta definida en el fichero 'settings' de Django para almacenar el fichero JSON con los datos del análisis. En este punto se elimina el proyecto del almacenamiento local, se lee el fichero JSON, se extraen los datos siguiendo el mapeo definido y se almacena todo en la base de datos\footnote{En la base de datos sólo se almacenan los ficheros analizados que contengan algun bear.}. Finalmente, se monta el código HTML sobre la plantilla y se envía para mostrar la información.
 
 A continuación se muestra el aspecto del fichero JSON generado por Coala y desde donde se extraen los datos que se almacenan en la base de datos:
 
@@ -777,7 +783,7 @@ A continuación se muestra el aspecto del fichero JSON generado por Coala y desd
 }
 
 Cuando queremos analizar una lista de proyectos a través de un fichero de texto, la aplicación se comporta según el diagrama de la figura~\ref{fig:AnalizarFichero}.
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=7cm, keepaspectratio]{img/AnalizarFichero}
   \caption{Diagrama de flujo en el análisis de proyectos por fichero}
@@ -787,7 +793,7 @@ El fichero únicamente debe contener las URLs de GitHub correspondientes a los p
 
 Cuando el cliente introduce la ruta del fichero que contiene las URLs, el servidor comprueba que la ruta es válida y en caso contrario muestra una página de error. Una vez comprobado, el servidor lee el fichero línea a línea y sigue el mismo proceso que en el apartado anterior, que recordemos es: comprobar que la URL pertenece a un proyecto de GitHub, descarga del proyecto, análisis y almacenamiento de datos. Si alguno de los proyectos no puede ser analizado, la aplicación pasa a la siguiente línea.
 
-Una vez terminado el análisis, se cargan los datos en template correspondiente y se envía el código HTML al cliente para mostrar un resumen de todos los proyectos analizados. Para mostrar este resumen, cada vez que analizamos un proyecto se incluye en una lista y al finalizar se muestran los datos almacenados para los proyectos de esa lista.
+Una vez terminado el análisis, se cargan los datos en el template correspondiente y se envía el código HTML al cliente para mostrar un resumen de todos los proyectos analizados. Para mostrar este resumen, cada vez que analizamos un proyecto se incluye en una lista y al finalizar se muestran los datos almacenados para los proyectos de esa lista.
 
 \subsection{Búsqueda en la base de datos}
 \label{sec:seccion12.2}
@@ -803,11 +809,11 @@ Otra de las funcionalidades de la aplicación es mostrar un resumen de todos los
 
 \subsubsection{Resumen de proyectos almacenados}
 \label{sec:section12.3.1}
-Cuando el cliente envía una petición para mostrar los datos de proyectos, el servidor recorre la lista de ficheros almacenados y cuenta todos los pertenecientes a ese proyecto. Repite la operación con los bears almacenados y finalmente monta una tabla con estos datos y el enlace a la página que contiene todos los detalles del proyecto. Finalmente envía el código HTML al cliente.
+Cuando el cliente envía una petición para mostrar los datos de proyectos, el servidor recorre la lista de ficheros almacenados y cuenta todos los pertenecientes a ese proyecto. Repite la operación con los bears almacenados para contar la cantidad de bears encontrados. Finalmente, monta una tabla con estos datos, el enlace a la página que contiene todos los detalles del proyecto y el porcentaje de ficheros afectados respecto al número total de ficheros del proyecto antes de enviar el código HTML al cliente.
 
 \subsubsection{Resumen de ficheros almacenados}
 \label{sec:section12.3.2}
-Cuando la petición del cliente es para mostrar los datos de los ficheros, el servidor recorre la lista de bears almacenados y cuenta todos aquellos que pertenecen a cada fichero, mostrando los bears totales por fichero. Finalmente monta una tabla de resumen con estos datos, el nombre el proyecto y enlaces a las páginas de detalle del fichero y proyecto al que pertenecen, y envía el código HTML al cliente.
+Cuando la petición del cliente es para mostrar los datos de los ficheros afectados por algún bear, el servidor recorre la lista de bears almacenados y cuenta todos aquellos que pertenecen a cada fichero, mostrando los bears totales por fichero. Finalmente monta una tabla de resumen con estos datos, el nombre el proyecto y enlaces a las páginas de detalle del fichero y proyecto al que pertenecen, y envía el código HTML al cliente.
 
 \subsubsection{Resumen de bears almacenados}
 \label{sec:section12.3.3}
@@ -829,7 +835,7 @@ El cliente envía una petición al servidor cuando accede a la página de un pro
 \end{verbatim}
 }
 
-Al acceder a la página de información de un proyecto, el servidor busca el proyecto en la base de datos y en caso de que no exista la respuesta del servidor se mostrará en una página de error. Si el proyecto existe, muestra todos los campos almacenados (nombre y URL en GitHub) y el número total de ficheros analizados. Además, recorre la lista de los ficheros relacionados con este proyecto y muestra un resumen del tipo y cantidad de bears encontradospara cada uno.
+Al acceder a la página de información de un proyecto, el servidor busca el proyecto en la base de datos y en caso de que no exista la respuesta del servidor se mostrará en una página de error. Si el proyecto existe, muestra todos los campos almacenados, el número total de ficheros anfectados y el porcentaje de ficheros afectados respecto al total de ficheros Python del proyecto. Además, recorre la lista de los ficheros relacionados con este proyecto y muestra un resumen del tipo y cantidad de bears encontradospara cada uno.
 
 La información de los ficheros analizados está oculta por defecto y puede mostrarse si el usuario lo desea gracias al código JavaScript que contiene la página. Esto se hace para no amontonar la información en pantalla, de forma que el usuario vea un resumen de los datos y se muestre lo demás si lo desea.
 
@@ -857,7 +863,7 @@ El cliente envía una petición al servidor cuando accede a la página de un bea
 \end{verbatim}
 }
 
-Cada ID es único, por tanto se comprueba que el bear correspondiente a esa Id se encuentra almacenado en la base de datos y en caso contrario se muestra una página de error. Si el bear existe en la base de datos, se extrae toda la información y se monta el código HTML para en viarlo al cliente. Cada bear se corresponde con un proyecto y fichero concreto.
+Cada ID es único, por tanto se comprueba que el bear correspondiente a esa Id se encuentra almacenado en la base de datos y en caso contrario se muestra una página de error. Si el bear existe en la base de datos, se extrae toda la información\footnote{Aspect, MessageArguments y MessageBase no se muestran por no aportar información extra al usuario.} y se monta el código HTML para en viarlo al cliente. Cada bear se corresponde con un proyecto y fichero concreto.
 
 \subsection{Eliminación de proyectos almacenados}
 \label{sec:seccion12.5}
@@ -877,18 +883,18 @@ Gracias a Django, es posible hacer una separación entre la presentación final 
 
 Para la creación de estos templates, me he ayudado de BootStrap, que permite crear sitios web atractivos a la vista y con algunas funcionalidades realmente útiles. Además, gracias a BootStrap, el diseño de la aplicación se adapta al tamaño del dispositivo permitiendo una correcta visualización en cada caso, es decir, es un diseño 'responsive'. Además, todas las páginas diseñadas cuentan con una barra de navegación superior que facilita el acceso a las diferentes funcionalidades que tiene la aplicación.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=4cm, keepaspectratio]{img/webAdaptativa}
-  \caption{Página principal adaptada a un ventana pequeña}
+  \caption{Página principal adaptada a una ventana pequeña}
   \label{fig:webAdaptativa}
 \end{figure}
 
-La página principal muestra una breve explicación el proyecto y acto seguido una lista con todos los proyectos analizados ordenados en orden ascendente por cantidad de bears encontrados. Aunque la cantidad de bears encontrados depende en gran medida del tamaño del proyecto y los ficheros analizados, con un primer vistazo ya podemos ver un resumen de lo que nos encontraremos.
+La página principal muestra una breve explicación el proyecto y acto seguido una lista con todos los proyectos analizados ordenados en orden ascendente por el porcentaje de ficheros afectados por algún bear. Aunque la cantidad de bears encontrados depende en gran medida del tamaño del proyecto y los ficheros analizados, con un primer vistazo ya podemos ver un resumen de lo que nos encontraremos.
 
 El usuario puede pinchar en 'Más información' para acceder a la página de un proyecto dentro de la aplicación, o en el enlace de GitHub para inspeccionar el proyecto en la plataforma.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/homePage}
   \caption{Página principal de la aplicación web}
@@ -897,7 +903,7 @@ El usuario puede pinchar en 'Más información' para acceder a la página de un 
 
 Si el usuario quiere analizar un proyecto, o varios, al entrar en el apartado de análisis encontrará las dos posibles opciones: analizar a partir de una URL o analizar a partir de un fichero de texto. Al pulsar en la opción deseada, se mostrará la página correspondiente en la que el usuario debe introducir la URL o la ruta absoluta del fichero que contiene las URLs que se van a analizar.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/webAnalisis}
   \caption{Páginas de análisis. Arriba, la página principal; en el medio, la página de análisis a partir de un fichero; y abajo, la página de análisis a partir de una URL.}
@@ -906,7 +912,7 @@ Si el usuario quiere analizar un proyecto, o varios, al entrar en el apartado de
 
 Al concluir el análisis, en ambos casos se muestra un resumen de los proyectos analizados. En este resumen se incluye la información del proyecto y un resumen de ficheros y bears encontrados que podemos mostrar u ocultar pinchando en 'Mostrar/ocultar ficheros analizados'. Si queremos ver los bears de cada tipo, al pinchar en el enlace haremos una búsqueda en la base de datos de ese tipo de bear o también podemos acceder a la página de información para el proyecto o alguno de los ficheros.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenAnalisis}
   \caption{Resumen del análisis realizado.}
@@ -915,7 +921,7 @@ Al concluir el análisis, en ambos casos se muestra un resumen de los proyectos 
 
 La siguiente funcionalidad es la de buscar en la base de datos. Al acceder a esta página, nos muestra un cuadro de texto y las opciones entre las que podemos elegir para iniciar la búsqueda.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/webBuscar}
   \caption{Página de búsqueda.}
@@ -923,30 +929,30 @@ La siguiente funcionalidad es la de buscar en la base de datos. Al acceder a est
 \end{figure}
 
 Una vez terminada, se muestra un listado con todos los datos encontrados. Si por ejemplo queremos buscar el fichero 'sort.py', nos mostrará todos los ficheros con ese nombre almacenados, en este caso solo hay uno. En caso de que el fichero no se encuentre en la base de datos, mostrará un mensaje de error.
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resultadoBuscar}
   \caption{Ejemplo de búsqueda por fichero.}
   \label{fig:resultadoBuscar}
 \end{figure}
 
-Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, habrá que dirigirse al apartado correspondiente de la web. En el caso de los proyectos y ficheros, el listado aparece ordenado por cantidad de bears encontrados, sin tener en cuenta de que tipo son. En el caso de los bears, aparecen ordenados los bears encontrados por tipo.
+Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, habrá que dirigirse al apartado correspondiente de la web. Los proyectos están ordenados de mayor a menor porcentaje de ficheros afectados por algun bear, los ficheros aparecen ordenado por cantidad de bears encontrados, sin tener en cuenta de que tipo son, y en el caso de los bears, aparecen ordenados los bears encontrados por tipo.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenProyectos}
-  \caption{Página de resumen de proyectos almacenados ordenados por cantidad de bears encontrados.}
+  \caption{Página de resumen de proyectos almacenados ordenados por porcentaje de ficheros afectados.}
   \label{fig:resumenProyectos}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenFicheros}
   \caption{Página de resumen de ficheros almacenados ordenados por cantidad de bears encontrados.}
   \label{fig:resumenFicheros}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenBears}
   \caption{Página de resumen de tipos bears almacenados ordenados por cantidad total.}
@@ -954,10 +960,16 @@ Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, 
 \end{figure}
 Finalmente, tenemos las páginas de información de cada proyecto, fichero y bears. En ellas se muestra toda la información almacenada en la base de datos. Cuando analizamos un proyecto, podemos consultar la página del proyecto y a partir de ahí navegar por los diferentes archivos y consultar los bears que se han encontrado, los mensajes que lanza cada uno de ellos, etc...
 
-La página de proyecto es exactamente igual a la mostrada en la figura~\ref{fig:resumenAnalisis}, ya que esa análisis se realizó para un único proyecto y se muestra toda la información.
+La página de proyecto muestra una información parecida a la que nos encontramos en la página de inicio, pero además tiene información sobre los ficheros almacenados para ese proyecto. Esa información se puede mostrar u ocultar pinchando en el enlace correspondiente.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=12cm, keepaspectratio]{img/infoProyecto}
+  \caption{Página de información de proyecto.}
+  \label{fig:infoProyecto}
+\end{figure}
 
 La página de información del fichero muestra los datos del fichero y además una tabla con todos los bears encontrados. Esta tabla tiene los datos básicos, como son el tipo de bear, el mensaje lanzado, las líneas afectadas y el Id de cada uno de los bears.
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/infoFichero}
   \caption{Página de información de fichero.}
@@ -965,8 +977,7 @@ La página de información del fichero muestra los datos del fichero y además u
 \end{figure}
 
 La página de información del bear muestra todos los datos almacenados para cada bear. Esta es la página con mayor nivel de detalle tras hacer el análisis, puesto que en ella podemos ver el problema concreto que ha detectado la herramienta.
-
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/infoBear}
   \caption{Página de información de bear.}
@@ -984,6 +995,7 @@ La tabla Project almacena la información de los proyectos. Para identificar un 
 \begin{itemize}
           \item Name: Nombre del proyecto analizado.
           \item URL: URL donde está alojado en proyecto en GitHub. Es la URL que hay que proporcionar a la aplicación para analizar proyectos.
+          \item TotalFiles: Cantidad de ficheros Python que forman el proyecto.
 \end{itemize}
 
 \subsection{File}
@@ -1027,9 +1039,54 @@ Para la creación de la tabla Bear que contiene la información de los bears enc
 
 \cleardoublepage
 \chapter{Resultados}
+Para comprender la utilidad de la aplicación, vamos a analizar una lista de 50 proyectos\footnote{Dentro de los 51 mejores solo se ha excluido 1 por tamaño.} dentro aquellos que cuentan con más estrellas en GitHub. Para ello, vamos a utilizar un fichero de configuración en el que incluiremos, en lugar de todo el listado disponible para Python, una selección de bears para centrarnos solo en algunos aspectos y evitando aquellos bears que hacen un análisis completo por si mismos. De este modo se pretende clasificar los resultados por los datos concretos que analiza cada uno de estos bears.
 
+\section{Fichero de configuración}
+\label{sec:_coafile}
+Para la prueba utilizaré el siguiente '.coafile':
 
+{\footnotesize
+\begin{verbatim}
+    [Default]
+    bears = FilenameBear,PEP8Bear,PyCommentedCodeBear,VultureBear,SpaceConsistencyBear
+    files = *.py
+    use_spaces = True
+\end{verbatim}
+}
+'FileNameBear' comprobará que el nombre de los ficheros sigue la convención 'snake', 'PEP8Bear' comprobará que se sigue la guía de estilo descrita en PEP8, 'PyCommentedCodeBear' buscará código fuente comentado, 'VultureBear' buscará clases, funciones y variables que no son utilizadas y finalmente 'SpaceConsistencyBear' comprobará el espaciado. Todos los bears utilizaran la configuración por defecto y en el caso de 'SpaceConsistencyBear' habilitamos la opción que obliga al uso de espacios en lugar de tabulaciones.
 
+\section{Datos recogidos}
+\label{sec:_datarec}
+Tras finalizar el análisis, consultamos el resumen de Bears. El tipo de bear que se ha dectectado un mayor número de veces es el 'PEP8Bear', de donde se puede concluir que, dentro de este escenario, el principal problema de los principales proyectos tiene que ver con problemas de estilo, aunque este bear no especifica exactamente en su mensaje el error encontrado.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm, keepaspectratio]{img/resultadosBear}
+  \caption{Página de resumen de bears recogidos.}
+  \label{fig:resultadosBear}
+\end{figure}
+
+El siguiente bear de la lista es 'SpaceConsistencyBear', por lo que muchos de estos proyectos cuentan con problemas de espaciado y utilizan tabulaciones en lugar de espacios. El tercer elemento de la lista es 'VultureBear', seguido de 'PyCommentedCode' y terminando por 'FileNameBear' en un número bastante inferior.
+
+De todo lo anterior se deduce que incluso los proyectos mejor valorados tienen problemas de estilo, pero sin embargo es poco frecuente que sus ficheros no sigan la convención.
+
+Ahora vamos a hacer una comparación entre proyectos. Uno de los datos que podemos visualizar con la aplicación es el porcentaje de ficheros que cuentan con, al menos, un bear detectado, es decir, un problema a priori.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm, keepaspectratio]{img/anexoTabla}
+  \caption{Lista de proyectos analizados.}
+  \label{fig:anexoTabla}
+\end{figure}
+
+Dentro de este escenario, el proyecto con un menor porcentaje de ficheros Python Afectados por algún bear es 'faker', cuyo creador es 'joker2k'. ¿Esto hace de 'faker' el proyecto con menos 'errores' del listado? La respuesta es que depende. Aunque es el que menos ficheros tiene afectados por algún bear, es el segundo en cantidad de bears por fichero afectado.
+
+Por ejemplo el proyecto 'hosts' de 'StevenBlack' tiene errores en todos sus ficheros Python, pero son errores sobre la convención de nombrado de los ficheros ('FilenameBear'), en total es en el que menos bears se han encontrado.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm, keepaspectratio]{img/proyectoHosts}
+  \caption{Página del proyecto 'hosts'.}
+  \label{fig:proyectoHosts}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1044,55 +1101,49 @@ Para la creación de la tabla Bear que contiene la información de los bears enc
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
 
-Esta sección es la sección espejo de las dos primeras del capítulo de objetivos,
-donde se planteaba el objetivo general y se elaboraban los específicos.
+Esta sección es la sección espejo del capítulo de objetivos, donde se revisará si se han alcanzado los objetivos marcados al inicio de este trabajo. Para hacer esta valoración iré de los objetivos más específicos hasta el objetivo general.
 
-Es aquí donde hay que debatir qué se ha conseguido y qué no. Cuando algo no
-se ha conseguido, se ha de justificar, en términos de qué problemas se han
-encontrado y qué medidas se han tomado para mitigar esos problemas.
+Para poder desarrollar la aplicación el primer paso era aprender a utilizar Coala y estudiar cada uno de los bears que podemos utilizar. Para ello estudié el funcionamiento de la aplicación y los bears descritos en el Capítulo 2. Cada uno de estos bears tiene una funcionalidad distinta y consta de diferentes opciones de configuración.
 
+Una vez estudiado el funcionamiento de Coala, era necesario mapear la salida del fichero JSON para poder almacenar la infomación correctamente. UNa vez hecho esto, la aplicación es capaz de mostrar todos los campos contenidos en ese fichero sin singun tipo de problema, tratando los datos de forma que se acoplen a los resultados obtenidos en cada análisis, como por ejemplo, contemplando casos en los que no existe una línea afectada por tratarse de un bear que se refiere a todo el fichero o la configuración del proyecto en su totalidad.
+
+Antes de poner en marcha la aplicación en Django, había que probar que todo encajaba correctamente. La primera versión del programa servía para testear que las asunciones hechas anteriormente eran las correctas y el análisis arrojaba los resultados esperados. Tras una serie de pruebas, la herramienta era capaz de analizar un listado de proyectos procedentes de un fichero.
+
+El siguiente paso era trasladar aquella lógica a Django, para presentar los resultados en forma de página web y almacenar la información en una base de datos. Django facilita mucho la tarea de lidiar con bases de datos debido a su simplicidad a la hora de almacenar y consultar la información.
+
+Finalmente quedaba crear todos los 'templates' necesarios para presentar la información al usuario. Justo en este punto se empieza a optimizar el funcionamiento de la aplicación y se añaden nuevas funcionalidades como el resumen de datos, la búsqueda, análisis de ficheros a partir de una URL, eliminación de proyectos almacenados (aunque sea una función que no se presente al usuario por estar pensada para el administrador), ordenar la información o incluir el porcentaje de ficheros afectados en el proyecto.
+
+El objetivo principal de este trabajo era el desarrollo de una aplicación web que sirviera para analizar código fuente Python. Revisando todo lo anterior llegamos a la conclusión de que el objetivo principal se ha cumplido.
 
 \section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
-
-Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado
-en el TFG/TFM. Una buena idea es poner las asignaturas más relacionadas y
-comentar en un párrafo los conocimientos y habilidades puestos en práctica.
+En la elaboración de este trabajo se han utilizado nuemerosas tecnologías. Algunas de ellas eran totalmente desconocidas para mi, pero otras formaban parte del temario de asignaturas que formaban parte de carrera:
 
 \begin{enumerate}
-  \item a
-  \item b
+  \item Conocimiento adquiridos en SAT: es la asignatura en la que aprendí la mayor parte de de los conocimiento aplicados en este proyecto. En ella adquirí conocimientos de Python, Django, HTML, CSS,... por lo que está muy relacionada con este proyecto.
+  \item Arquitectura cliente-servidor: vista en más de una asignatura, llegando a presentar numerosas prácticas con este modelo aunque no solo en Python, también utilizando otros lenguajes como Java.
 \end{enumerate}
 
 
 \section{Lecciones aprendidas}
 \label{sec:lecciones_aprendidas}
-
-Aquí viene lo que has aprendido en el Trabajo Fin de Grado/Máster.
+Para la realización de este proyecto he aprendido a utilizar herramientas y tecnologías que desconocia o que no había usado hasta este momento:
 
 \begin{enumerate}
-  \item a
-  \item b
+  \item Coala: no tenía conocimiento de la existencia de esta herramienta hasta que mi tutor me habló de ello. Es de gran utilidad para el análisis de código gracias a que a partir de una sola herramienta y gracias a sus numerosos bears podemos hacer análisis de todo tipo.
+  \item Git/GitHub: es otra de las claves de este proyecto. Me ha servido tanto para encontrar los proyectos que he analizado para la realización de este proyecto como para alojar el proyecto en si mismo. Facilita mucho el control de versiones y la posibilidad de colaborar en proyectos o que otros desarrolladores colaboren en tu proyecto.
+  \item BootStrap: para mí ha sido un gran descubrimiento. Es de enorme utilidad a la hora de diseñar páginas web. Ha sido de mucha ayuda a la hora de mejorar el aspecto de las diferentes vistas de la aplicación.
+  \item JSON: conocía la tecnología, pero no lo había utilizado tanto hasta la elaboración de este trabajo. Me ha faiclitado mucho el tratamiento de los datos procedentes de los análisis.
 \end{enumerate}
 
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
+Ningún software se termina, todas las aplicaciones necesitan nuevas funcionalidades y requieren de constantes actualizaciones. Es proyecto no se escapa a este aspecto y, como todas, está abierto a mejoras.
 
-Ningún software se termina, así que aquí vienen ideas y funcionalidades
-que estaría bien tener implementadas en el futuro.
+Una de las funciones más interesantes sería la elaboración de una clasificación o ranking de 'calidad' de los proyectos a partir de los datos recogidos. Aunque se analizan los ficheros y se da una idea a partir del porcentaje de ficheros afectados por algún problema, podría entrar más en detalle clasificando la gravedad de cada bear y no solo la cantidad. Dentro de este ámbito de la 'calidad', se podrían hacer muchas clasificaciones diferentes y tener diferentes rankings dependiendo de factores concretos.
 
-Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
-
-
-\section{Valoración personal}
-\label{sec:valoracion}
-
-Finalmente (y de manera opcional), hay gente que se anima a dar su punto de
-vista sobre el proyecto, lo que ha aprendido, lo que le gustaría haber aprendido,
-las tecnologías utilizadas y demás.
-
-
+Otra funcionalidad extra podría apoyarse en la capacidad de algunos bears de reparar los problemas detectados, configurando los bears compatibles para solucionar estos problemas y hacer un pull request al propietario de forma automática.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1103,6 +1154,81 @@ las tecnologías utilizadas y demás.
 \appendix
 \chapter{Manual de usuario}
 \label{app:manual}
+
+\section{Instalación de Coala}
+\label{app:inst_coala}
+Antes de poder utilizar la aplicación es necesario instalar Coala en el equipo. Para ello hay que ejecutar en una terminal el siguiente comando para su instalación simple:
+{\footnotesize
+\begin{verbatim}
+    $ pip3 install coala-bears
+\end{verbatim}
+}
+
+Sin embargo, si se va a utilizar un entorno virtual:
+{\footnotesize
+\begin{verbatim}
+    $ pip3 install virtualenv
+    $ virtualenv venv        # On Linux
+    $ venv\scripts\activate  # On Windows
+\end{verbatim}
+}
+
+\section{Instalación de Django}
+\label{app:inst_Django}
+Para poder utilizar la aplicación es necesario tener instalado Django. Para ello hay que ejecutar:
+{\footnotesize
+\begin{verbatim}
+    $ pip install django
+\end{verbatim}
+}
+
+Para lanzar el servidor hay que abrir una terminal en la ruta en la que se encuentra el proyecto y ejecutar:
+{\footnotesize
+\begin{verbatim}
+    python manage.py runserver
+\end{verbatim}
+}
+Esto lanzará el servidor con la configuración por defecto, que es la utilizada en este proyecto.
+
+\section{Uso del analizador}
+\label{app:analyzer}
+Se puede descargar o clonar el proyecto desde su página de GitHub:
+{\footnotesize
+\begin{verbatim}
+   https://github.com/rsanlo/prAnalysis
+\end{verbatim}
+}
+
+Antes de ejecutar el servidor, hay que configurar las rutas por defecto en el fichero de Django dentro de '/prAnalysis/settings.py'. Los datos a editar son 'workspace', que es el lugar donde descargará los proyectos para analizarlos y donde buscará el fichero de configuración '.coafile', y 'jsonFile', que es donde alamcenará y consultará el fichero JSON.
+{\footnotesize
+\begin{verbatim}
+    # GLOBAL CONSTANTS
+    CONSTANTS = {
+    'workspace': '/tmp',
+    'jsonFile': '/tmp/coala_analysis.json',
+\end{verbatim}
+}
+Una vez hecho esto, hay que situar el fichero '.coafile' en la ruta definida. Su estructura debe ser como sigue:
+{\footnotesize
+\begin{verbatim}
+    [Default]
+    bears = Bear1, Bear2, Bear3,...
+    opcionA = valorA
+    opcionB = valorB
+    .
+    .
+    .
+\end{verbatim}
+}
+
+En 'bears' añadimos los bears que queremos utilizar y debajo las opciones que vayamos a configurar para los bears.
+
+El cliente accederá a la página principal a través de la siguiente URL:
+{\footnotesize
+\begin{verbatim}
+   http://localhost:8000/analyzer
+\end{verbatim}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

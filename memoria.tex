@@ -155,7 +155,16 @@ mi familia, que siempre me ha apoyado.}
 %\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado 
 
-Aquí vienen los agradecimientos\ldots 
+¡Por fin llegó el dia! Con la entrega de este proyecto doy por terminada esta etapa de mi vida. Ha sido un camino largo, muchas horas de estudio, dias de biblioteca, alegrías y decepciones, pero todo esfuerzo tiene su recompensa. Al final de esta estapa no solo me llevo el título, también me llevo un trocito de todas esas personas con las que he compartido mis dias y que han estado ahí para hacerlo todo mas llevadero.
+
+A Celia, por tu amistad y apoyo incondicional; a Carlos, por todos esos momentos compartidos dentro y fuera de la universidad; a Álvaro, por esos dias en su casa agobiados con las prácticas y las discusiones futboleras; a Borja, por esos primeros dias de uni y todos los viajes camino a la universidad; a Joel, Pedro, César, Larraco, Victor, Sergio, Hugo, Alberto, Raquel, y a todos los que me dejo, con quienes he compartido muchas horas de estudio, dudas, alegrias, confidencias y muchísimas risas.
+
+A mi tutor, Gregorio, por su ayuda y consejo para la realización de este trabajo. Gracias por todo.
+
+A mis amigos, que fueron un apoyo y una via de escape en momentos de agobio.
+
+Y por supuesto a mi familia, que siempre me ha apoyado en todos los sentidos. Vero, gracias por estar siempre que te he necesitado. Abuelos, por vuestra forma de afrontar las adversidades y demostrarme que es posible superar cualquier cosa. Pero sobre todo a mis padres, por todo su apoyo y el enorme esfuerzo que han hecho para que yo pudiera conseguir este objetivo, todo esto es tan mío como vuestro.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen
 
@@ -1037,7 +1046,7 @@ Para la creación de la tabla Bear que contiene la información de los bears enc
 
 \cleardoublepage
 \chapter{Resultados}
-Para comprender la utilidad de la aplicación, vamos a analizar una lista de 50 proyectos\footnote{Dentro de los 51 mejores solo se ha excluido 1 por tamaño.} dentro aquellos que cuentan con más estrellas en GitHub. Para ello, vamos a utilizar un fichero de configuración en el que incluiremos, en lugar de todo el listado disponible para Python, una selección de bears para centrarnos solo en algunos aspectos y evitando aquellos bears que hacen un análisis completo por si mismos. De este modo se pretende clasificar los resultados por los datos concretos que analiza cada uno de estos bears.
+Para comprender la utilidad de la aplicación, vamos a analizar una lista de 50 proyectos\footnote{Dentro de los 52 con mas estrellas solo se han excluido 2 por tamaño.} dentro aquellos que cuentan con más estrellas en GitHub. Para ello, vamos a utilizar un fichero de configuración en el que incluiremos, en lugar de todo el listado disponible para Python, una selección de bears para centrarnos solo en algunos aspectos y evitando aquellos bears que hacen un análisis completo por si mismos. De este modo se pretende clasificar los resultados por los datos concretos que analiza cada uno de estos bears.
 
 \section{Fichero de configuración}
 \label{sec:_coafile}
@@ -1076,7 +1085,14 @@ Ahora vamos a hacer una comparación entre proyectos. Uno de los datos que podem
   \label{fig:anexoTabla}
 \end{figure}
 
-Dentro de este escenario, el proyecto con un menor porcentaje de ficheros Python Afectados por algún bear es 'faker', cuyo creador es 'joker2k'. ¿Esto hace de 'faker' el proyecto con menos 'errores' del listado? La respuesta es que depende. Aunque es el que menos ficheros tiene afectados por algún bear, es el segundo en cantidad de bears por fichero afectado.
+Dentro de este escenario, el proyecto con un menor porcentaje de ficheros Python Afectados por algún bear es 'thefuck', cuyo creador es 'nvbn'. ¿Esto hace de 'thefuck' el proyecto con menos 'errores' del listado? La respuesta es que depende. Es el que menos ficheros tiene afectados por algún bear en términos absolutos, es el segundo en cantidad de bears por fichero afectado. Además, el fichero que cuenta con mas errores tiene 8, realcionados con el estilo, código en desuso y el uso de espacios.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm, keepaspectratio]{img/theFuckInfo}
+  \caption{Extracto de lista de ficheros afectados en 'thefuck'.}
+  \label{fig:theFuckInfo}
+\end{figure}
 
 Por ejemplo el proyecto 'hosts' de 'StevenBlack' tiene errores en todos sus ficheros Python, pero son errores sobre la convención de nombrado de los ficheros ('FilenameBear'), en total es en el que menos bears se han encontrado.
 \begin{figure}[h]
@@ -1085,6 +1101,26 @@ Por ejemplo el proyecto 'hosts' de 'StevenBlack' tiene errores en todos sus fich
   \caption{Página del proyecto 'hosts'.}
   \label{fig:proyectoHosts}
 \end{figure}
+
+Para recabar más información sobre el proyecto 'thefuck', habría que inspeccionar los ficheros. Por ejemplo, el fichero 'test\_yarn\_command\_not\_found.py', que es el que mayor número de bears acumula en este proyecto.
+
+Como se observa en la figura~\ref{fig:ficheroTheFuck}, la mayor parte de errores vienen de la inclusión de espacios al final o al inicio de una sentencia. Si inspeccionamos uno de esos errores en el fichero, a través del enlace a la línea exacta desde la información de bear, podremos comprobar como existe un espacio en blanco a la derecha de '--json' que ha detectado el 'SpaceConsistencyBear', que por defecto no permite estos espacios.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm, keepaspectratio]{img/ficheroTheFuck}
+  \caption{Detalle de bears encontrados en un fichero de 'thefuck'.}
+  \label{fig:ficheroTheFuck}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm, keepaspectratio]{img/bearData}
+  \caption{Detalle de uno de los bears encontrados. A la izquierda, la página de la aplicación; a la derecha el fichero en GitHub.}
+  \label{fig:bearData}
+\end{figure}
+
+Así, la aplicación nos ayuda a detectar y corregir el código en el caso de ser necesario. Uno de los principales ejemplos de uso seria analizar un proyecto propio de GitHub y a partir de los resultados del analisis, arreglar aquellas partes que lo necesiten.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

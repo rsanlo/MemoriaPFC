@@ -701,7 +701,7 @@ Algunas templates utilizados en este proyecto cuentan con código JavaScript que
 \subsection{Base de datos}
 \label{sec:seccion11.3}
 La base de datos o el modelo como se conoce en Django, se define en el fichero models.py dentro de nuestro proyecto como muestra la figura~\ref{fig:EstructuraBBDD}.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/EstructuraBBDD}
   \caption{Estructura de la base de datos utilizada}
@@ -720,7 +720,7 @@ El servidor se encarga de procesar las peticiones y mostrar la información al c
 Una de las principales características de la aplicación es el análisis de proyectos. Para hacer este análisis, existen dos posibilidades que el cliente puede elegir dentro del la página de análisis: hacer el análisis de un solo proyecto a partir de la URL del proyecto alojado en GitHub o hacer un análisis masivo de proyectos desde un fichero de texto que contenga las URLs.
 
 Cuando queremos analizar un solo fichero a partir de su URL, la aplicación se comporta según el diagrama de la figura~\ref{fig:AnalizarURL}.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=7cm, keepaspectratio]{img/AnalizarURL}
   \caption{Diagrama de flujo en el análisis de proyectos por URL}
@@ -790,7 +790,7 @@ A continuación se muestra el aspecto del fichero JSON generado por Coala y desd
 }
 
 Cuando queremos analizar una lista de proyectos a través de un fichero de texto, la aplicación se comporta según el diagrama de la figura~\ref{fig:AnalizarFichero}.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=7cm, keepaspectratio]{img/AnalizarFichero}
   \caption{Diagrama de flujo en el análisis de proyectos por fichero}
@@ -890,7 +890,7 @@ Gracias a Django, es posible hacer una separación entre la presentación final 
 
 Para la creación de estos templates, me he ayudado de BootStrap, que permite crear sitios web atractivos a la vista y con algunas funcionalidades realmente útiles. Además, gracias a BootStrap, el diseño de la aplicación se adapta al tamaño del dispositivo permitiendo una correcta visualización en cada caso, es decir, es un diseño 'responsive'. Además, todas las páginas diseñadas cuentan con una barra de navegación superior que facilita el acceso a las diferentes funcionalidades que tiene la aplicación.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=4cm, keepaspectratio]{img/webAdaptativa}
   \caption{Página principal adaptada a una ventana pequeña}
@@ -901,7 +901,7 @@ La página principal muestra una breve explicación el proyecto y acto seguido u
 
 El usuario puede pinchar en 'Más información' para acceder a la página de un proyecto dentro de la aplicación, o en el enlace de GitHub para inspeccionar el proyecto en la plataforma.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/homePage}
   \caption{Página principal de la aplicación web}
@@ -910,7 +910,7 @@ El usuario puede pinchar en 'Más información' para acceder a la página de un 
 
 Si el usuario quiere analizar un proyecto, o varios, al entrar en el apartado de análisis encontrará las dos posibles opciones: analizar a partir de una URL o analizar a partir de un fichero de texto. Al pulsar en la opción deseada, se mostrará la página correspondiente en la que el usuario debe introducir la URL o la ruta absoluta del fichero que contiene las URLs que se van a analizar.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/webAnalisis}
   \caption{Páginas de análisis. Arriba, la página principal; en el medio, la página de análisis a partir de un fichero; y abajo, la página de análisis a partir de una URL.}
@@ -919,7 +919,7 @@ Si el usuario quiere analizar un proyecto, o varios, al entrar en el apartado de
 
 Al concluir el análisis, en ambos casos se muestra un resumen de los proyectos analizados. En este resumen se incluye la información del proyecto y un resumen de ficheros y bears encontrados que podemos mostrar u ocultar pinchando en 'Mostrar/ocultar ficheros analizados'. Si queremos ver los bears de cada tipo, al pinchar en el enlace haremos una búsqueda en la base de datos de ese tipo de bear o también podemos acceder a la página de información para el proyecto o alguno de los ficheros.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenAnalisis}
   \caption{Resumen del análisis realizado.}
@@ -928,7 +928,7 @@ Al concluir el análisis, en ambos casos se muestra un resumen de los proyectos 
 
 La siguiente funcionalidad es la de buscar en la base de datos. Al acceder a esta página, nos muestra un cuadro de texto y las opciones entre las que podemos elegir para iniciar la búsqueda.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/webBuscar}
   \caption{Página de búsqueda.}
@@ -936,7 +936,7 @@ La siguiente funcionalidad es la de buscar en la base de datos. Al acceder a est
 \end{figure}
 
 Una vez terminada, se muestra un listado con todos los datos encontrados. Si por ejemplo queremos buscar el fichero 'sort.py', nos mostrará todos los ficheros con ese nombre almacenados, en este caso solo hay uno. En caso de que el fichero no se encuentre en la base de datos, mostrará un mensaje de error.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resultadoBuscar}
   \caption{Ejemplo de búsqueda por fichero.}
@@ -945,21 +945,21 @@ Una vez terminada, se muestra un listado con todos los datos encontrados. Si por
 
 Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, habrá que dirigirse al apartado correspondiente de la web. Los proyectos están ordenados de mayor a menor porcentaje de ficheros afectados por algun bear, los ficheros aparecen ordenado por cantidad de bears encontrados, sin tener en cuenta de que tipo son, y en el caso de los bears, aparecen ordenados los bears encontrados por tipo.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenProyectos}
   \caption{Página de resumen de proyectos almacenados ordenados por porcentaje de ficheros afectados.}
   \label{fig:resumenProyectos}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenFicheros}
   \caption{Página de resumen de ficheros almacenados ordenados por cantidad de bears encontrados.}
   \label{fig:resumenFicheros}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/resumenBears}
   \caption{Página de resumen de tipos bears almacenados ordenados por cantidad total.}
@@ -968,7 +968,7 @@ Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, 
 Finalmente, tenemos las páginas de información de cada proyecto, fichero y bears. En ellas se muestra toda la información almacenada en la base de datos. Cuando analizamos un proyecto, podemos consultar la página del proyecto y a partir de ahí navegar por los diferentes archivos y consultar los bears que se han encontrado, los mensajes que lanza cada uno de ellos, etc...
 
 La página de proyecto muestra una información parecida a la que nos encontramos en la página de inicio, pero además tiene información sobre los ficheros almacenados para ese proyecto. Esa información se puede mostrar u ocultar pinchando en el enlace correspondiente.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/infoProyecto}
   \caption{Página de información de proyecto.}
@@ -976,7 +976,7 @@ La página de proyecto muestra una información parecida a la que nos encontramo
 \end{figure}
 
 La página de información del fichero muestra los datos del fichero y además una tabla con todos los bears encontrados. Esta tabla tiene los datos básicos, como son el tipo de bear, el mensaje lanzado, las líneas afectadas y el Id de cada uno de los bears.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/infoFichero}
   \caption{Página de información de fichero.}
@@ -984,7 +984,7 @@ La página de información del fichero muestra los datos del fichero y además u
 \end{figure}
 
 La página de información del bear muestra todos los datos almacenados para cada bear. Esta es la página con mayor nivel de detalle tras hacer el análisis, puesto que en ella podemos ver el problema concreto que ha detectado la herramienta.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/infoBear}
   \caption{Página de información de bear.}
@@ -1066,7 +1066,7 @@ Para la prueba utilizaré el siguiente '.coafile':
 \label{sec:_datarec}
 Tras finalizar el análisis, consultamos el resumen de Bears. El tipo de bear que se ha dectectado un mayor número de veces es el 'PEP8Bear', de donde se puede concluir que, dentro de este escenario, el principal problema de los principales proyectos tiene que ver con problemas de estilo, aunque este bear no especifica exactamente en su mensaje el error encontrado.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/resultadosBear}
   \caption{Página de resumen de bears recogidos.}
@@ -1078,7 +1078,7 @@ El siguiente bear de la lista es 'SpaceConsistencyBear', por lo que muchos de es
 De todo lo anterior se deduce que incluso los proyectos mejor valorados tienen problemas de estilo, pero sin embargo es poco frecuente que sus ficheros no sigan la convención.
 
 Ahora vamos a hacer una comparación entre proyectos. Uno de los datos que podemos visualizar con la aplicación es el porcentaje de ficheros que cuentan con, al menos, un bear detectado, es decir, un problema a priori.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/anexoTabla}
   \caption{Lista de proyectos analizados.}
@@ -1087,7 +1087,7 @@ Ahora vamos a hacer una comparación entre proyectos. Uno de los datos que podem
 
 Dentro de este escenario, el proyecto con un menor porcentaje de ficheros Python Afectados por algún bear es 'thefuck', cuyo creador es 'nvbn'. ¿Esto hace de 'thefuck' el proyecto con menos 'errores' del listado? La respuesta es que depende. Es el que menos ficheros tiene afectados por algún bear en términos absolutos, es el segundo en cantidad de bears por fichero afectado. Además, el fichero que cuenta con mas errores tiene 8, realcionados con el estilo, código en desuso y el uso de espacios.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/theFuckInfo}
   \caption{Extracto de lista de ficheros afectados en 'thefuck'.}
@@ -1095,7 +1095,7 @@ Dentro de este escenario, el proyecto con un menor porcentaje de ficheros Python
 \end{figure}
 
 Por ejemplo el proyecto 'hosts' de 'StevenBlack' tiene errores en todos sus ficheros Python, pero son errores sobre la convención de nombrado de los ficheros ('FilenameBear'), en total es en el que menos bears se han encontrado.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/proyectoHosts}
   \caption{Página del proyecto 'hosts'.}
@@ -1106,14 +1106,14 @@ Para recabar más información sobre el proyecto 'thefuck', habría que inspecci
 
 Como se observa en la figura~\ref{fig:ficheroTheFuck}, la mayor parte de errores vienen de la inclusión de espacios al final o al inicio de una sentencia. Si inspeccionamos uno de esos errores en el fichero, a través del enlace a la línea exacta desde la información de bear, podremos comprobar como existe un espacio en blanco a la derecha de '--json' que ha detectado el 'SpaceConsistencyBear', que por defecto no permite estos espacios.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/ficheroTheFuck}
   \caption{Detalle de bears encontrados en un fichero de 'thefuck'.}
   \label{fig:ficheroTheFuck}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/bearData}
   \caption{Detalle de uno de los bears encontrados. A la izquierda, la página de la aplicación; a la derecha el fichero en GitHub.}

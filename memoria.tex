@@ -145,7 +145,7 @@ Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 2017
 \pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
 \begin{flushright}
 \textit{Dedicado a \\
-mi familia, que siempre me ha apoyado.}
+mi familia.}
 \end{flushright}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -202,7 +202,7 @@ This project aims to create an application web in order to analyse GitHub projec
 
 The design is based on the client-server model, so that both can be hosted in the same computer but there is a separation between the application logic and the presentation of the results.
 
-The application web has been developed with Python, using Django framework and technologies as Coala, BootStrap, CSS, HTML, JSON and JavaScript. The project is focused on the anaysis of Python projects hosted in Github, however, with a few changes, it could be used to analyse code of any other language supported by Coala.
+The application web has been developed with Python, using Django framework and technologies as Coala, BootStrap, CSS, HTML, JSON and JavaScript. The project is focused on the analysis of Python projects hosted in Github, however, with a few changes, it could be used to analyse code of any other language supported by Coala.
 
 The collected data after Coala analysis are stored in a database that can be consulted by the users through the application web and use the application funcionalities.
 
@@ -750,7 +750,7 @@ Una vez descargado el proyecto, se analiza con Coala. Como solo vamos a analizar
 \end{verbatim}
 }
 
-Donde `python\_files' son los ficheros con extensión `.py' y `settings.CONSTANTS[`jsonFile']' es la ruta definida en el fichero `settings' de Django para almacenar el fichero JSON con los datos del análisis. En este punto se elimina el proyecto del almacenamiento local, se lee el fichero JSON, se extraen los datos siguiendo el mapeo definido y se almacena todo en la base de datos\footnote{En la base de datos sólo se almacenan los ficheros analizados que contengan algun bear.}. Finalmente, se monta el código HTML sobre la plantilla y se envía para mostrar la información.
+Donde `python\_files' son los ficheros con extensión `.py' y `settings.CONSTANTS[`jsonFile']' es la ruta definida en el fichero `settings' de Django para almacenar el fichero JSON con los datos del análisis. En este punto se elimina el proyecto del almacenamiento local, se lee el fichero JSON, se extraen los datos siguiendo el mapeo definido y se almacena todo en la base de datos\footnote{En la base de datos sólo se almacenan los ficheros analizados que contengan algún bear.}. Finalmente, se monta el código HTML sobre la plantilla y se envía para mostrar la información.
 
 A continuación se muestra el aspecto del fichero JSON generado por Coala y desde donde se extraen los datos que se almacenan en la base de datos:
 
@@ -927,7 +927,7 @@ Al concluir el análisis, en ambos casos se muestra un resumen de los proyectos 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=9cm, keepaspectratio]{img/webAnalisis}
+  \includegraphics[width=15cm, keepaspectratio]{img/webAnalisis}
   \caption{Páginas de análisis. Arriba, la página principal; en el medio, la página de análisis a partir de un fichero; y abajo, la página de análisis a partir de una URL.}
   \label{fig:webAnalisis}
 \end{figure}
@@ -961,22 +961,22 @@ Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/resumenProyectos}
+  \includegraphics[width=15cm, keepaspectratio]{img/resumenProyectos}
   \caption{Página de resumen de proyectos almacenados ordenados por porcentaje de ficheros afectados.}
   \label{fig:resumenProyectos}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/resumenFicheros}
-  \caption{Página de resumen de ficheros almacenados ordenados por cantidad de bears encontrados.}
+  \includegraphics[width=13cm, keepaspectratio]{img/resumenFicheros}
+  \caption{Información mostrada en la página de resumen de ficheros almacenados ordenados por cantidad de bears encontrados.}
   \label{fig:resumenFicheros}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/resumenBears}
-  \caption{Página de resumen de tipos bears almacenados ordenados por cantidad total.}
+  \includegraphics[width=11cm, keepaspectratio]{img/resumenBears}
+  \caption{Información mostrada en la página de resumen de tipos bears almacenados.}
   \label{fig:resumenBears}
 \end{figure}
 
@@ -985,7 +985,7 @@ Finalmente, tenemos las páginas de información de cada proyecto, fichero y bea
 La página de proyecto muestra una información parecida a la que nos encontramos en la página de inicio, pero además tiene información sobre los ficheros almacenados para ese proyecto concreto. Esa información se puede mostrar u ocultar pinchando en el enlace correspondiente.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/infoProyecto}
+  \includegraphics[width=15cm, keepaspectratio]{img/infoProyecto}
   \caption{Página de información de proyecto.}
   \label{fig:infoProyecto}
 \end{figure}
@@ -996,15 +996,15 @@ La página de información del bear muestra todos los datos almacenados para cad
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/infoFichero}
-  \caption{Página de información de fichero.}
+  \includegraphics[width=16cm, keepaspectratio]{img/infoFichero}
+  \caption{Información mostrada en la página de información de fichero.}
   \label{fig:infoFichero}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/infoBear}
-  \caption{Página de información de bear.}
+  \includegraphics[width=16cm, keepaspectratio]{img/infoBear}
+  \caption{Información mostrada en la página de información de bear.}
   \label{fig:infoBear}
 \end{figure}
 
@@ -1104,23 +1104,27 @@ Ahora vamos a hacer una comparación entre proyectos. Uno de los datos que podem
   \label{fig:anexoTabla}
 \end{figure}
 
-Dentro de este escenario, el proyecto con un menor porcentaje de ficheros Python afectados por algún bear es `thefuck', cuyo creador es `nvbn'. ¿Esto hace de `thefuck' el proyecto con menos `errores' del listado? La respuesta es que depende. Es el que menos ficheros tiene afectados por algún bear en términos absolutos, pero a su vez es el segundo en cantidad de bears por fichero afectado. Además, el fichero que cuenta con más errores tiene 8, relacionados con el estilo, código en desuso y el uso de espacios.
+En la tabla anterior se ha añadido una columna con información que no procede de la aplicación, obtenida de hacer una división entre la cantidad de bears encontrados y la cantidad de ficheros afectados: `Bears por fichero afectado'.
+
+Dentro de este escenario, el proyecto con un menor porcentaje de ficheros Python afectados por algún bear es `thefuck', cuyo creador es `nvbn'. ¿Esto hace de `thefuck' el proyecto con menos `errores' del listado? La respuesta es que depende. Es el que menos ficheros tiene afectados por algún bear en términos absolutos, y a su vez uno de los mejores en cantidad de bears por fichero afectado. Además, el fichero que cuenta con más errores tiene 8, relacionados con el estilo, código en desuso y el uso de espacios.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=15cm, keepaspectratio]{img/theFuckInfo}
+  \includegraphics[width=16cm, keepaspectratio]{img/theFuckInfo}
   \caption{Extracto de lista de ficheros afectados en `thefuck'.}
   \label{fig:theFuckInfo}
 \end{figure}
 
-Por ejemplo el proyecto `hosts' de `StevenBlack' tiene errores en todos sus ficheros Python, pero son errores sobre la convención de nombrado de los ficheros (`FilenameBear'), en total es en el que menos bears se han encontrado.
+Por ejemplo el proyecto `hosts' de `StevenBlack' tiene errores en todos sus ficheros Python, pero son errores sobre la convención de nombrado de los ficheros (`FilenameBear'), en total es en el que menos bears se han encontrado, pero se trata de un proyecto pequeño en cuanto al número de ficheros totales en comparación con el resto de proyectos de la lista. Además, estos problemas son fácilmente reparables si queremos utilizar la convención de nombrado tipo `snake', ya que basta con renombrarlos.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/proyectoHosts}
-  \caption{Página del proyecto `hosts'.}
+  \caption{Información mostrada en la página del proyecto `hosts'.}
   \label{fig:proyectoHosts}
 \end{figure}
+
+Si tenemos en cuenta el número total de ficheros Python de cada proyecto, sin duda `thefuck' destaca sobre el resto.
 
 Para recabar más información sobre el proyecto `thefuck', habría que inspeccionar los ficheros almacenados. Por ejemplo, el fichero `test\_yarn\_command\_not\_found.py', que es el que mayor número de bears acumula en este proyecto.
 
@@ -1129,7 +1133,7 @@ Como se observa en la figura~\ref{fig:ficheroTheFuck}, la mayor parte de errores
 \begin{figure}[H]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/ficheroTheFuck}
-  \caption{Detalle de bears encontrados en un fichero de 'thefuck'.}
+  \caption{Detalle de bears encontrados en un fichero de `thefuck'.}
   \label{fig:ficheroTheFuck}
 \end{figure}
 

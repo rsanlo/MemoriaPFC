@@ -916,7 +916,7 @@ El usuario puede pinchar en `Más información' para acceder a la página de un 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/homePage}
+  \includegraphics[width=16cm, keepaspectratio]{img/homePage}
   \caption{Página principal de la aplicación web.}
   \label{fig:homePage}
 \end{figure}
@@ -943,7 +943,7 @@ La siguiente funcionalidad es la de buscar en la base de datos. Al acceder a est
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/webBuscar}
+  \includegraphics[width=15cm, keepaspectratio]{img/webBuscar}
   \caption{Página de búsqueda.}
   \label{fig:webBuscar}
 \end{figure}
@@ -968,7 +968,7 @@ Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=13cm, keepaspectratio]{img/resumenFicheros}
+  \includegraphics[width=15cm, keepaspectratio]{img/resumenFicheros}
   \caption{Información mostrada en la página de resumen de ficheros almacenados ordenados por cantidad de bears encontrados.}
   \label{fig:resumenFicheros}
 \end{figure}
@@ -985,8 +985,8 @@ Finalmente, tenemos las páginas de información de cada proyecto, fichero y bea
 La página de proyecto muestra una información parecida a la que nos encontramos en la página de inicio, pero además tiene información sobre los ficheros almacenados para ese proyecto concreto. Esa información se puede mostrar u ocultar pinchando en el enlace correspondiente.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=15cm, keepaspectratio]{img/infoProyecto}
-  \caption{Página de información de proyecto.}
+  \includegraphics[width=16cm, keepaspectratio]{img/infoProyecto}
+  \caption{Información mostrada en la página de información de proyecto.}
   \label{fig:infoProyecto}
 \end{figure}
 
@@ -1128,7 +1128,7 @@ Si tenemos en cuenta el número total de ficheros Python de cada proyecto, sin d
 
 Para recabar más información sobre el proyecto `thefuck', habría que inspeccionar los ficheros almacenados. Por ejemplo, el fichero `test\_yarn\_command\_not\_found.py', que es el que mayor número de bears acumula en este proyecto.
 
-Como se observa en la figura~\ref{fig:ficheroTheFuck}, la mayor parte de errores vienen de la inclusión de espacios al final o al inicio de una sentencia. Si inspeccionamos uno de esos errores en el fichero, a través del enlace a la línea exacta desde la información de bear, podremos comprobar como existe un espacio en blanco a la derecha de `--json' que ha detectado el `SpaceConsistencyBear', ya que con la configuración utilizada para este análisis no permite estos espacios.
+Como se observa en la figura~\ref{fig:ficheroTheFuck}, la mayor parte de errores vienen de la inclusión de espacios al final o al inicio de una sentencia. 
 
 \begin{figure}[H]
   \centering
@@ -1137,14 +1137,27 @@ Como se observa en la figura~\ref{fig:ficheroTheFuck}, la mayor parte de errores
   \label{fig:ficheroTheFuck}
 \end{figure}
 
+Podemos ver en más detalle uno de los bears de la lista a través del enlace. Ahí se muestra toda la información que ha recopilado Coala.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=17cm, keepaspectratio]{img/bearData}
-  \caption{Detalle de uno de los bears encontrados. A la izquierda, la página de la aplicación; a la derecha el fichero en GitHub.}
+  \caption{Detalle de uno de los bears encontrados por la aplicación.}
   \label{fig:bearData}
 \end{figure}
 
-Así, la aplicación nos ayuda a detectar y corregir el código en el caso de ser necesario. Uno de los principales ejemplos de uso seria analizar un proyecto propio de GitHub y a partir de los resultados del análisis, arreglar aquellas partes que lo necesiten.
+Para ver exactamente donde se encuentra el fallo, podemos inspeccionar el fichero a través del enlace a la línea exacta desde la información de bear, en este caso la línea 24. Una vez abierto, comprobaremos que existe al menos un espacio en blanco a la derecha de `--json' que ha detectado el `SpaceConsistencyBear', ya que con la configuración utilizada para este análisis no permite estos espacios.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=17cm, keepaspectratio]{img/bearDataGitHub}
+  \caption{Detalle de uno de los bears encontrados en GitHub.}
+  \label{fig:bearDataGitHub}
+\end{figure}
+
+De este modo, la aplicación nos ayuda a detectar errores y corregir el código en caso de ser necesario. 
+
+Uno de los principales ejemplos de uso sería analizar un proyecto propio de GitHub y a partir de los resultados del análisis, evaluar los errores que ha detectado la aplicación y corregir aquellos que consideremos necesarios para mejorar el funcionamiento del proyecto o ajustarnos a las normas de estilo establecidas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

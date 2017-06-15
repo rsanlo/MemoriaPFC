@@ -204,7 +204,7 @@ The design is based on the client-server model, so that both can be hosted in th
 
 The application web has been developed with Python, using the Django framework, and technologies as Coala, BootStrap, CSS, HTML, JSON and JavaScript. The project is focused on the analysis of Python projects hosted in Github, however, with a few changes, it could be used to analyse code of any other language supported by Coala.
 
-The collected data after Coala analysis are stored in a database that can be consulted by the users through the application web and use the application funcionalities.
+The collected data after Coala analysis are stored in a database that the user a) can consult through the application web and b) use the application funcionalities.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -289,7 +289,7 @@ Para alcanzar el objetivo principal se han perseguido los siguientes objetivos e
   \item Examinar los resultados del análisis con Coala a partir del fichero JSON generado y mapear estos datos para tratarlos posteriormente.
   \item Crear la primera versión de la herramienta capaz de analizar una lista de proyectos Python alojados en GitHub.
   \item Trasladar la herramienta a la aplicación web con Django, adaptando las vistas y organizando la base de datos para mostrar la información obtenida de forma sencilla.
-  \item Optimizar el código y aplicación de mejoras visuales que faciliten el uso de la herramienta de forma que esta sea más rápida y sencilla de utilizar.
+  \item Optimizar el código y aplicar mejoras visuales que faciliten el uso de la herramienta de forma que esta sea más rápida y sencilla de utilizar.
 \end{itemize}
 
 
@@ -433,7 +433,7 @@ Detecta código fuente comentado en Python. No tiene opciones de configuración.
 Analiza el código con la herramienta Pycodestyle\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/}}, formalmente conocida como PEP8. 
 Sirve para comprobar que el código sigue las convenciones de estilo definidas para Python en PEP8.
 
-Pycodestyle permite agregar nuevas normas de forma sencilla gracias a su estructura. Además, su salida es parseable, es ligero y contiene una completa \emph{suite} de pruebas. Actualmente consta de un completo listado\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes}} de códigos de error y advertencia. Hay que tener en cuenta que en la configuración por defecto, se ignoran los códigos E121, E123, E126, E133, E226, E241, E242, E704 y W503, ya que se corresponden con reglas que no están aceptadas de forma unánime y PEP8 no obliga a que sean cumplidas. El código E133 es mutuamente exclusivo con el código E123. FIXME: ¿y qué son estos códigos? ¿A qué se refieren en particular?
+Pycodestyle permite agregar nuevas normas de forma sencilla gracias a su estructura. Además, su salida es parseable, es ligero y contiene una completa \emph{suite} de pruebas. Actualmente consta de un completo listado\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes}} de códigos de error y advertencia. Hay que tener en cuenta que en la configuración por defecto se ignoran los códigos E121 (línea de continuación insuficientemente indentada), E123 (la indentación del corchete de cierre no coincide con la de la línea del corchete de apertura), E126 (línea de continuación sobreindentada), E133 (corchete de cierre sin indentación), E226 (espacio en blanco faltante alrededor de un operador aritmético), E241 (múltiples espacios después de una `,'), E242 (tabulación después de una `,'), E704 (múltiples declaraciones en la definición de una función) y W503 (salto de línea antes de un operador binario), ya que se corresponden con reglas que no están aceptadas de forma unánime y PEP8 no obliga a que sean cumplidas. El código E133 es mutuamente exclusivo con el código E123.
 
 \begin{itemize}
   \item Lenguajes: Python, Python 2, Python 3
@@ -447,7 +447,7 @@ Pycodestyle permite agregar nuevas normas de forma sencilla gracias a su estruct
 
 \subsubsection{PyFlakesBear}
 \label{sec:seccion1.2.8}
-Analiza las ficheros Python en busca de errores con la herramienta PyFlakesBear\footnote{\url{https://github.com/PyCQA/pyflakes}}, que puede detectar problemas de sintaxis, código sin uso y elementos indefinidos.
+Analiza los ficheros Python en busca de errores con la herramienta PyFlakesBear\footnote{\url{https://github.com/PyCQA/pyflakes}}, que puede detectar problemas de sintaxis, código sin uso y elementos indefinidos.
 
 Es una herramienta que no tiene en cuenta el estilo. Es más limitada que otras herramientas debido a que sólo examina el árbol de sintaxis de los archivos de forma individual, pero esta característica también lo hace más rápida. No tiene disponibles opciones de configuración con Coala.
 
@@ -532,8 +532,8 @@ Comprueba la semántica y convenciones relacionadas con los `docstrings'\footnot
   \item Lenguajes: Python, Python 2, Python 3
   \item Configuración
     \begin{itemize}
-          \item PYDOCSTYLE\_SELECT: Lista que especifica los errores que se van a chequear. No puede usarse a la vez que `PYDOCSTYLE\_IGNORE'. Es opcional y por defecto está vacío.
-          \item PYDOCSTYLE\_IGNORE: Lista que especifica los errores que se van a ignorar. No puede usarse a la vez que `PYDOCSTYLE\_SELECT'. Es opcional y por defecto está vacío.
+          \item PYDOCSTYLE\_SELECT: Lista que especifica los errores que se van a chequear. No puede usarse a la vez que `PYDOCSTYLE\_IGNORE'. Es opcional y por defecto está vacía.
+          \item PYDOCSTYLE\_IGNORE: Lista que especifica los errores que se van a ignorar. No puede usarse a la vez que `PYDOCSTYLE\_SELECT'. Es opcional y por defecto está vacía.
     \end{itemize}
 \end{itemize}
 
@@ -558,8 +558,8 @@ Radon sirve para calcular la complejidad de un fichero dado.
   \item Configuración
     \begin{itemize}
           \item RADON\_RANKS\_INFO: Categorías, dadas por Radon, para tratar la gravedad INFO. Es opcional y por defecto es una lista vacía.
-          \item RADON\_RANKS\_NORMAL: Categorías, dadas por Radon, para tratar la gravedad NORMAL. Es opcional y por defecto es '('C', 'D')'.
-          \item RADON\_RANKS\_MAJOR:Categorías, dadas por Radon, para tratar la gravedad MAJOR. Es opcional y por defecto es '('E', 'F')'.
+          \item RADON\_RANKS\_NORMAL: Categorías, dadas por Radon, para tratar la gravedad NORMAL. Es opcional y por defecto es `(`C', `D')'.
+          \item RADON\_RANKS\_MAJOR:Categorías, dadas por Radon, para tratar la gravedad MAJOR. Es opcional y por defecto es `(`E', `F')'.
     \end{itemize}
 \end{itemize}
 
@@ -620,7 +620,7 @@ Django está diseñado para ayudar a los desarrolladores a desarrollar aplicacio
 
 Otro de los aspectos importantes de Django es la seguridad. Django ayuda a evitar errores de seguridad comunes como la inyección de SQL, cross-site scripting\footnote{\url{http://www.cgisecurity.com/xss-faq.html#whatis}}, etc. Su sistema de autenticación de usuarios proporciona una forma segura de administrar cuentas de usuario y contraseñas.
 
-He utilizado Django para desarrollar la aplicación por su facilidad a la hora de crear las vistas y el interfaz web con en el que se interactúa con la aplicación. Adicionalmente, con Django se simplifica considerablemente el manejo de bases de datos, un aspecto muy importante de este proyecto.
+He utilizado Django para desarrollar la aplicación por su facilidad a la hora de crear las vistas y el interfaz web con el que se interactúa con la aplicación. Adicionalmente, con Django se simplifica considerablemente el manejo de bases de datos, un aspecto muy importante de este proyecto.
 
 \section{GitHub} 
 \label{sec:seccion4}
@@ -684,7 +684,7 @@ En este proyecto se ha utilizado JSON como formato de salida de los análisis co
 
 \section{Arquitectura general} 
 \label{sec:seccion11}
-La aplicación desarrollada está basada en el modelo cliente-servidor. En este modelo, cada una de las partes ejecuta acciones diferentes: el cliente realiza peticiones a la aplicación a través de la interfaz web; y el servidor atiende estas peticiones y da una respuesta al cliente. Además, hay que tener el cuenta que la mayoría de las peticiones, sino todas, conllevan el acceso a la base de datos, ya sea para almacenar o extraer información.
+La aplicación desarrollada está basada en el modelo cliente-servidor. En este modelo, cada una de las partes ejecuta acciones diferentes: el cliente realiza peticiones a la aplicación a través de la interfaz web; y el servidor atiende estas peticiones y da una respuesta al cliente. Además, hay que tener en cuenta que la mayoría de las peticiones, sino todas, conllevan el acceso a la base de datos, ya sea para almacenar o extraer información.
 
 Aunque cliente y servidor pueden estar alojados en la misma máquina, existe una separación lógica entre ambas partes.
 
@@ -717,9 +717,9 @@ Algunas templates utilizados en este proyecto cuentan con código JavaScript que
 La base de datos o el modelo como se conoce en Django, se define en el fichero models.py. Dentro del proyecto, la base de datos se organiza como muestra la figura~\ref{fig:EstructuraBBDD}.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=9cm, keepaspectratio]{img/EstructuraBBDD}
+  \includegraphics[width=9cm, keepaspectratio]{img/Estructura_BBDD}
   \caption{Estructura de la base de datos utilizada.}
-  \label{fig:EstructuraBBDD}
+  \label{fig:Estructura_BBDD}
 \end{figure}
 Se encuentra dentro del servidor y es consultada o actualizada por este en función de las peticiones del cliente. En ella se almacenan los datos obtenidos en los análisis de proyectos Python. Las distintas tablas se relacionan entre ellas por medio de los distintos campos, se trata de una base de datos relacional.
 
@@ -740,7 +740,7 @@ Cuando queremos analizar un solo fichero a partir de su URL, la aplicación se c
   \caption{Diagrama de flujo en el análisis de proyectos por URL.}
   \label{fig:AnalizarURL}
 \end{figure}
-Cuando el cliente introduce una URL en el campo de texto, la aplicación comprueba se corresponde con una dirección de GitHub. Si la dirección no es correcta, se mostrará una página de error; en caso contrario de clonará el proyecto con git en un directorio local. Si el proyecto ya existe en la base de datos, se sobrescribirá y se realizará el análisis sobre la última versión del proyecto.
+Cuando el cliente introduce una URL en el campo de texto, la aplicación comprueba si se corresponde con una dirección de GitHub. Si la dirección no es correcta, se mostrará una página de error; en caso contrario se clonará el proyecto con git en un directorio local. Si el proyecto ya existe en la base de datos, se sobrescribirá y se realizará el análisis sobre la última versión del proyecto.
 
 Una vez descargado el proyecto, se analiza con Coala. Como solo vamos a analizar los ficheros Python, hay que ejecutar Coala sobre los ficheros con extensión `.py'. Además queremos que los resultados se muestren con la estructura de un JSON y redirigirlo a un fichero para su posterior análisis. Teniendo en cuenta todo esto, se ejecuta Coala del siguiente modo, utilizando un \emph{pipe} de Python:
 
@@ -874,7 +874,7 @@ El cliente envía una petición al servidor cuando accede a la página de un fic
 
 Al acceder a la página de información de un proyecto, comprueba que existan en la base de datos tanto el proyecto como el fichero en cuestión. Si no existen se mostrará una página de error y en caso contrario se saca toda la información del fichero (nombre, proyecto al que pertenece, URL en GitHub y path local del fichero). Además, se recorren los bears asociados a este fichero y se extrae parte de la información como el nombre del bear, la línea del fichero donde se encontró, el mensaje del bear y su Id.
 
-Como en el caso anterior, la información de bears encontrados se encuentra oculta por defecto y puede desplegarse gracias al código JavaScript insertado en el código HTML.
+Como en el caso anterior, la información de bears encontrados aparece oculta por defecto y puede desplegarse gracias al código JavaScript insertado en el código HTML.
 
 \subsubsection{Detalle de bear}
 \label{sec:section12.4.3}
@@ -904,7 +904,7 @@ Las peticiones al servidor se realizan a través de la parte del cliente, ademá
 
 Gracias a Django, es posible hacer una separación entre la presentación final de la aplicación y la lógica de la misma. Para ello, he definido una serie de templates que servirán de base para el código HTML que se va a mostrar en cada caso. En el fichero `views.py' añadiremos la información en contexto dentro del template una vez procesada la petición del cliente para mostrar la respuesta.
 
-Para la creación de estos templates, me he ayudado de BootStrap, que permite crear sitios web atractivos a la vista y con algunas funcionalidades realmente útiles. Además, gracias a BootStrap, el diseño de la aplicación se adapta al tamaño del dispositivo permitiendo una correcta visualización en cada caso, es decir, es un diseño `responsive'. Además, todas las páginas diseñadas cuentan con una barra de navegación superior que facilita el acceso a las diferentes funcionalidades que tiene la aplicación.
+Para la creación de estos templates, me he ayudado de BootStrap, que permite crear sitios web atractivos a la vista y con algunas funcionalidades realmente útiles. Gracias a BootStrap, el diseño de la aplicación se adapta al tamaño del dispositivo permitiendo una correcta visualización en cada caso, es decir, es un diseño `responsive'. Además, todas las páginas diseñadas cuentan con una barra de navegación superior que facilita el acceso a las diferentes funcionalidades que tiene la aplicación.
 
 \begin{figure}[H]
   \centering
@@ -1066,7 +1066,7 @@ Para la creación de la tabla Bear que contiene la información de los bears enc
 
 \cleardoublepage
 \chapter{Resultados}
-Para comprender la utilidad de la aplicación, vamos a analizar una lista de 50 proyectos\footnote{De los 52 con más estrellas, dos han sido excluido debido a su gran tamaño.} de entre todos aquéllos que cuentan con más estrellas en GitHub. Para ello, vamos a utilizar un fichero de configuración en el que incluiremos, en lugar de todo el listado disponible para Python, una selección de bears para centrarnos solo en algunos aspectos y evitando aquellos bears que hacen un análisis completo por si mismos. De este modo se pretende clasificar los resultados por los datos concretos que analiza cada uno de estos bears.
+Para comprender la utilidad de la aplicación, vamos a analizar una lista de 50 proyectos\footnote{De los 52 con más estrellas, dos han sido excluidos debido a su gran tamaño.} de entre todos aquéllos que cuentan con más estrellas en GitHub. Para ello, vamos a utilizar un fichero de configuración en el que incluiremos, en lugar de todo el listado disponible para Python, una selección de bears para centrarnos solo en algunos aspectos y evitando aquellos bears que hacen un análisis completo por si mismos. De este modo se pretende clasificar los resultados por los datos concretos que analiza cada uno de estos bears.
 
 \section{Fichero de configuración}
 \label{sec:_coafile}
@@ -1096,7 +1096,7 @@ Tras finalizar el análisis, consultamos el resumen de Bears. El tipo de bear qu
 
 El siguiente bear de la lista es `SpaceConsistencyBear', por lo que muchos de estos proyectos cuentan con problemas de espaciado y utilizan tabulaciones en lugar de espacios. El tercer elemento de la lista es `VultureBear', seguido de `PyCommentedCode' y terminando por `FileNameBear' en un número bastante inferior.
 
-De todo lo anterior se deduce que incluso los proyectos mejor valorados tienen problemas de estilo, pero sin embargo es poco frecuente que sus ficheros no sigan la convención `snake'.
+De todo lo anterior se deduce que incluso los proyectos mejor valorados tienen problemas de estilo, pero sin embargo es menos frecuente que sus ficheros no sigan la convención `snake'.
 
 Ahora vamos a hacer una comparación entre proyectos. Uno de los datos que podemos visualizar con la aplicación es el porcentaje de ficheros que cuentan con, al menos, un bear detectado, es decir, un problema a priori:
 
@@ -1206,14 +1206,14 @@ Para la realización de este proyecto he aprendido a utilizar herramientas y tec
 \begin{enumerate}
   \item Coala: no tenía conocimiento de la existencia de esta herramienta hasta que mi tutor me habló de ello. Es de gran utilidad para el análisis de código gracias a que a partir de una sola herramienta y gracias a sus numerosos bears podemos hacer análisis de todo tipo.
   \item Git/GitHub: es otra de las claves de este proyecto. Me ha servido tanto para encontrar los proyectos que he analizado como para alojar el proyecto en sí mismo. Facilita mucho el control de versiones y la posibilidad de colaborar en proyectos o que otros desarrolladores colaboren en tu proyecto.
-  \item BootStrap: para mí ha sido un gran descubrimiento. Es de enorme utilidad a la hora de diseñar páginas web. Ha sido de mucha ayuda a la hora de mejorar el aspecto de las diferentes vistas de la aplicación.
+  \item BootStrap: para mí ha sido un gran descubrimiento. Es de enorme utilidad a la hora de diseñar páginas web. Ha sido de mucha ayuda para mejorar el aspecto de las diferentes vistas de la aplicación.
   \item JSON: conocía la tecnología, pero no lo había utilizado tanto hasta la elaboración de este trabajo. Me ha facilitado mucho el tratamiento de los datos procedentes de los análisis.
 \end{enumerate}
 
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
-Ningún software se termina, todas las aplicaciones necesitan nuevas funcionalidades y requieren de constantes actualizaciones. Es proyecto no se escapa a este aspecto y, como todas, está abierto a mejoras.
+Ningún software se termina, todas las aplicaciones necesitan nuevas funcionalidades y requieren de constantes actualizaciones. Es proyecto no se escapa a este aspecto y, como todos, está abierto a mejoras.
 
 Una de las funciones más interesantes sería la elaboración de una clasificación o ranking de `calidad' de los proyectos a partir de los datos recogidos. Aunque se analizan los ficheros y se da una idea a partir de los datos recogidos, se podría entrar más en detalle clasificando la gravedad de cada bear respecto al resto y no solo la cantidad. Dentro de este ámbito de la `calidad', se podrían hacer muchas clasificaciones diferentes y tener diferentes rankings dependiendo de factores concretos.
 
@@ -1304,6 +1304,12 @@ El cliente accederá a la página principal a través de la siguiente URL:
 \end{verbatim}
 }
 
+Las URLs de GitHub utilizadas para realizar los análisis deben tener la siguiente estructura:
+{\footnotesize
+\begin{verbatim}
+   http://github.com/CREADOR/PROYECTO.git
+\end{verbatim}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

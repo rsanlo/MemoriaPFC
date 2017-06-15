@@ -190,7 +190,7 @@ Python alojados en GitHub, aunque con unos pequeños cambios podría ser utiliza
 código de cualquier otro de los muchos lenguajes de programación que soporta Coala.
 
 Los datos obtenidos tras el análisis con Coala se almacenan en una base de datos que el usuario
-puede consultar a través de la página de la aplicación y utilizar las diferentes funcionalidades.
+puede a) consultar a través de la página de la aplicación y b) utilizar las diferentes funcionalidades.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen en inglés
 
@@ -239,9 +239,9 @@ The collected data after Coala analysis are stored in a database that can be con
 
 \section{Presentación}
 \label{sec:presentacion}
-El presente documento es la memoria de el trabajo realizado para el proyecto fin de carrera de Ingeniería de Telecomunicación. El proyecto consiste en la creación de una herramienta para analizar proyectos Python alojados en la plataforma GitHub, apoyado en la herramienta Coala.
+El presente documento es la memoria del trabajo realizado para mi proyecto fin de carrera de Ingeniería de Telecomunicación. El proyecto consiste en la creación de una herramienta para analizar proyectos Python alojados en la plataforma GitHub, apoyado en la herramienta Coala.
 
-A la hora de desarrollar un proyecto es importante localizar y solventar los posibles problemas que se presenten. Si contamos con una herramienta que pueda detectar posibles errores y, adicionalmente, alertar sobre discrepancias con la guía de estilo del lenguaje de programación que estemos usando, tendremos la información necesaria para ayudarnos a solucionar los errores y mejorar la calidad de nuestro proyecto.
+A la hora de desarrollar un proyecto es importante localizar y solucionar los posibles problemas que se presenten. Si contamos con una herramienta que pueda detectar posibles errores y, adicionalmente, alertar sobre discrepancias con la guía de estilo del lenguaje de programación que estemos usando, tendremos la información necesaria para ayudarnos a solucionar los errores y mejorar la calidad de nuestro proyecto.
 
 La aplicación web almacena la información recogida tras analizar los proyectos y la muestra de forma ordenada a varios niveles, facilitando la visualización de los datos. En este caso, la aplicación se ha orientado al análisis de proyectos Python, aunque puede servir como punto de partida para, haciendo algunos cambios, analizar proyectos desarrollados en otros lenguajes de programación, gracias a que Coala es compatible con un gran número de lenguajes de programación.
 
@@ -263,7 +263,7 @@ La memoria está estructurada del siguiente modo:
 
   \item \textbf{Capítulo 5. Resultados.} Análisis de los resultados obtenidos.
 
-  \item \textbf{Capítulo 6. Conclusiones.} Reflexión y conclusiones finales sobre el desarrollo del proyecto.
+  \item \textbf{Capítulo 6. Conclusiones.} Reflexión y conclusiones finales sobre el proyecto.
 \end{itemize}
 
 
@@ -279,14 +279,14 @@ La memoria está estructurada del siguiente modo:
 
 \section{Objetivo general}
 \label{sec:objetivo-general}
-El objetivo principal de este trabajo es desarrollar una aplicación web que sirva a analizar el código fuente de proyectos Python y mostrar los resultados de estos análisis.
+El objetivo principal de este trabajo es desarrollar una aplicación web que sirva a analizar el código fuente de proyectos Python, así como mostrar los resultados de estos análisis.
 
 \section{Objetivos específicos}
 \label{sec:objetivos-especificos}
 Para alcanzar el objetivo principal se han perseguido los siguientes objetivos específicos:
 \begin{itemize}
   \item Estudiar las funcionalidades de Coala y de los `bears' compatibles con Python.
-  \item Examinar resultados de análisis con Coala a partir del fichero JSON generado y mapear estos datos para tratarlos posteriormente.
+  \item Examinar los resultados del análisis con Coala a partir del fichero JSON generado y mapear estos datos para tratarlos posteriormente.
   \item Crear la primera versión de la herramienta capaz de analizar una lista de proyectos Python alojados en GitHub.
   \item Trasladar la herramienta a la aplicación web con Django, adaptando las vistas y organizando la base de datos para mostrar la información obtenida de forma sencilla.
   \item Optimizar el código y aplicación de mejoras visuales que faciliten el uso de la herramienta de forma que esta sea más rápida y sencilla de utilizar.
@@ -295,11 +295,12 @@ Para alcanzar el objetivo principal se han perseguido los siguientes objetivos e
 
 \section{Planificación temporal}
 \label{sec:planificacion-temporal}
-El presente proyecto surge a partir de otra idea inicial que si bien estaba relacionada, es un tanto distinta. La planificación temporal seguida para la elaboración de este proyecto, teniendo en cuenta que entre hitos he mantenido reuniones con mi tutor, ha sido la siguiente:
+
+La planificación temporal seguida para la elaboración de este proyecto, teniendo en cuenta que entre hitos he mantenido reuniones con mi tutor, ha sido la siguiente:
 
 \begin{itemize}
   \item Reunión con el tutor en busca de ayuda y consejo para la elaboración del proyecto. En ella acordamos tomar como base Coala para analizar proyectos Python.
-  \item Estudio de la herramienta Coala, para aprender como se usa, la diferentes funcionalidades, funcionamiento de los `bears' y ficheros de configuración,... Además del estudio de los resultados del análisis de Coala y los ficheros JSON generados dependiendo de la configuración utilizada.
+  \item Estudio de la herramienta Coala, para aprender como se usa, la diferentes funcionalidades, funcionamiento de los `bears' y ficheros de configuración, etc. Además del estudio de los resultados del análisis de Coala y los ficheros JSON generados dependiendo de la configuración utilizada.
   \item Definición de la estructura de la base de datos, mapeo de JSON obtenidos y creación de una primera versión de la herramienta, con una salida rudimentaria para mostrar los resultados.
   \item Desarrollo de la aplicación web con Django, llevando el programa principal a las vistas y la estructura de la base de datos a los modelos de Django.
   \item Mejora de aspecto de la web e inclusión de nuevas funcionalidades como la búsqueda por URL o fichero, búsqueda de resultados y presentación de datos.
@@ -330,7 +331,7 @@ En el presente proyecto, se ha utilizado Coala para analizar proyectos Python, p
 Fichero de configuración\footnote{\url{http://docs.coala.io/en/latest/Users/coafile.html}} de Coala. Se pueden utilizar hasta tres coafiles para configurar la herramienta:
 
 \begin{itemize}
-  \item Coafile por proyecto: Por convención este fichero es nombrado como `.coafile' y se aloja en  el directorio raíz del proyecto. Con esta convención, solo hay que ejecutar Coala desde el directorio raíz y la herramienta tomará la configuración del fichero.
+  \item Coafile por proyecto: Por convención este fichero es nombrado `.coafile' y se aloja en el directorio raíz del proyecto. Con esta convención, solo hay que ejecutar Coala y la herramienta tomará la configuración del fichero.
 
 Los ajustes definidos en este fichero de configuración anulan la configuración dada por el resto de ficheros de configuración y solo pueden ser anulados por aquellas opciones de configuración que introduzcamos por línea de comandos.
 
@@ -364,13 +365,14 @@ Este bear se puede aplicar a cualquier lenguaje de programación. Comprueba que 
   \item Configuración
     \begin{itemize}
           \item FILE\_NAMING\_CONVENTION: De manera opcional, se puede indicar una de las siguientes convenciones de nombrado: camel (thisIsCamelCase) - pascal (ThisIsPascalCase) - snake (this\_is\_snake\_case) - space (This Is Space Case). Por defecto, elige `snake'.
+          
           \item IGNORE\_UPPERCASE\_FILENAMES: De manera opcional, se puede indicar si se quiere ignorar los nombres de fichero completamente en mayúsculas. Por defecto se ignoran.
     \end{itemize}
 \end{itemize}
 
 \subsubsection{InvalidLinkBear}
 \label{sec:seccion1.2.3}
-Busca enlaces en los ficheros y comprueba si son válidos. Considera válido el enlace si el servidor responde con un código 2xx. Este bear hará peticiones HEAD a todas las URL del fichero, por lo que es potencialmente peligroso si el código contiene URLs que no deben ser visitadas. Por ejemplo, si el fichero contiene una línea como la siguiente do\_not\_ever\_open = `https://api.acme.inc/delete-all-data', este bear la visitará, borrando todos los datos.
+Busca enlaces en los ficheros y comprueba si son válidos. Considera válido el enlace si el servidor responde con un código 2xx. Este bear hará peticiones HEAD a todas las URLs del fichero, por lo que es potencialmente peligroso si el código contiene URLs que no deben ser visitadas. Por ejemplo, si el fichero contiene una línea como la siguiente do\_not\_ever\_open = `https://api.acme.inc/delete-all-data', este bear la visitará, borrando todos los datos.
 
 \begin{itemize}
   \item Lenguajes: Todos
@@ -385,9 +387,9 @@ Busca enlaces en los ficheros y comprueba si son válidos. Considera válido el 
 
 \subsubsection{MypyBear}
 \label{sec:seccion1.2.4}
-Comprueba la escritura estática usando la herramienta Mypy\footnote{\url{http://mypy.readthedocs.io/en/latest/basics.html}}. La herramienta chequea el código en busca de los errores de tipado mas comunes. Estas anotaciones referentes al tipo dentro del código no interfieren al ejecutar el programa al tratarse de un analizador estático.
+Comprueba la escritura estática usando la herramienta Mypy\footnote{\url{http://mypy.readthedocs.io/en/latest/basics.html}}. La herramienta chequea el código en busca de los errores de tipado más comunes. Estas anotaciones referentes al tipo dentro del código no interfieren al ejecutar el programa al tratarse de un analizador estático.
 
-Mypy puede comprobar que el código sigue las reglas básicas de anotaciones basadas en comentarios para Python 2 y Python 3 (utilizando PEP 484\footnote{\url{https://www.python.org/dev/peps/pep-0484/}}).
+Mypy puede comprobar que el código sigue las reglas básicas de anotaciones basadas en comentarios para Python 2 y Python 3 (utilizando la PEP 484\footnote{\url{https://www.python.org/dev/peps/pep-0484/}}).
 
 \begin{itemize}
   \item Lenguajes: Python, Python 2, Python 3
@@ -395,7 +397,7 @@ Mypy puede comprobar que el código sigue las reglas básicas de anotaciones bas
     \begin{itemize}
           \item LANGUAGE: Con `Python' o `Python 3', chequea código Python 3.x, mientras que la opción `Python 2' chequea código en Python 2.x. Es opcional y la opción por defecto es `Python 3'.
           \item ALLOW\_UNTYPED\_FUNCTIONS: Si su valor es `True', permite funciones sin anotaciones de tipo o con anotaciones de tipo incompletas. Por defecto el valor es `True'.
-          \item STRICT\_OPTIONAL: Habilita chequeos estrictos relacionados con tipos opcionales, comprobando que no se intentan realizar operaciones no admitidas en valores `None' o que no se utilizan valores `None' cuando se espera un valor no opcional. Esta característica aún es experimental\footnote{\url{http://mypy-lang.blogspot.com.es/2016/07/mypy-043-released.html}}. Es opcional y por defecto su valor es `False'.
+          \item STRICT\_OPTIONAL: Habilita comprobaciones estrictas relacionadas con tipos opcionales, comprobando que no se intentan realizar operaciones no admitidas en valores `None', o que no se utilizan valores `None' cuando se espera un valor no opcional. Esta característica es todavía experimental\footnote{\url{http://mypy-lang.blogspot.com.es/2016/07/mypy-043-released.html}}. Es opcional y por defecto su valor es `False'.
           \item PYTHON\_VERSION: Permite especificar la versión de Python concreta. Es opcional y por defecto su valor es `None'.
           \item CHECK\_UNTYPED\_FUNCTION\_BODIES: Permite no chequear el interior de las funciones que no tengan anotaciones de tipo. Es opcional y por defecto su valor es `False'.
           \item ALLOW\_UNTYPED\_CALLS: Permite la llamada a funciones sin anotaciones de tipo desde funciones tipadas. Es opcional y por defecto su valor es `True'.
@@ -404,16 +406,16 @@ Mypy puede comprobar que el código sigue las reglas básicas de anotaciones bas
 
 \subsubsection{PEP8Bear}
 \label{sec:seccion1.2.5}
-Detecta y corrige código que no cumpla con las normas de la guía de estilo para Python (PEP8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}). Este bear no modifica la funcionalidad del código de ninguna manera.
+Detecta y corrige código que no cumpla con las normas de la guía de estilo para Python (PEP8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}). Este bear no modifica la funcionalidad del código.
 
 \begin{itemize}
   \item Lenguajes: Python, Python 2, Python 3
   \item Configuración
     \begin{itemize}
           \item MAX\_LINE\_LENGTH: Permite definir el número máximo de caracteres por línea. Es opcional y por defecto son 79.
-          \item INDENT\_SIZE o TAB\_WIDTH: Permite definir el número de espacios para cada nivel de indentación. Es opcional y por defecto 4.
-          \item PEP\_IGNORE: Lista de errores o advertencias a ignorar. Es opcional y por defecto aparece vacío.
-          \item PEP\_SELECT: Lista de errores o advertencias para aplicar exclusivamente. Es opcional y por defecto aparece vacío.
+          \item INDENT\_SIZE o TAB\_WIDTH: Permite definir el número de espacios para cada nivel de indentación. Es opcional y por defecto vale 4.
+          \item PEP\_IGNORE: Lista de errores o advertencias a ignorar. Es opcional y por defecto aparece vacía.
+          \item PEP\_SELECT: Lista de errores o advertencias para aplicar exclusivamente. Es opcional y por defecto aparece vacía.
           \item LOCAL\_PEP8\_CONFIG: Si está a `True', `autopep8'\footnote{\url{https://pypi.python.org/pypi/autopep8}} (usado para corregir el código para que cumpla con la guia de estilo) deberá usar un fichero de configuración indicado. Es opcional y por defecto su valor es `False'.
     \end{itemize}
 \end{itemize}
@@ -428,9 +430,10 @@ Detecta código fuente comentado en Python. No tiene opciones de configuración.
 
 \subsubsection{PycodestyleBear}
 \label{sec:seccion1.2.7}
-Analiza el código con la herramienta Pycodestyle\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/}}, formalmente conocida como PEP8. Sirve para chequear que el código sigue las convenciones de estilo definidas para Python en PEP8.
+Analiza el código con la herramienta Pycodestyle\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/}}, formalmente conocida como PEP8. 
+Sirve para comprobar que el código sigue las convenciones de estilo definidas para Python en PEP8.
 
-Pycodestyle permite agregar nuevas normas de forma sencilla gracias a su estructura, su salida es parseable, es ligero y contiene una completa suite de pruebas. Actualmente consta de un completo listado\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes}} de códigos de error y advertencia. Hay que tener en cuenta que en la configuración por defecto, se ignoran los códigos E121, E123, E126, E133, E226, E241, E242, E704 y W503, ya que se corresponden con reglas que no están aceptadas de forma unánime y PEP8 no obliga a que sean cumplidas. El código E133 es mutuamente exclusivo con el código E123.
+Pycodestyle permite agregar nuevas normas de forma sencilla gracias a su estructura. Además, su salida es parseable, es ligero y contiene una completa \emph{suite} de pruebas. Actualmente consta de un completo listado\footnote{\url{https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes}} de códigos de error y advertencia. Hay que tener en cuenta que en la configuración por defecto, se ignoran los códigos E121, E123, E126, E133, E226, E241, E242, E704 y W503, ya que se corresponden con reglas que no están aceptadas de forma unánime y PEP8 no obliga a que sean cumplidas. El código E133 es mutuamente exclusivo con el código E123. FIXME: ¿y qué son estos códigos? ¿A qué se refieren en particular?
 
 \begin{itemize}
   \item Lenguajes: Python, Python 2, Python 3
@@ -446,7 +449,7 @@ Pycodestyle permite agregar nuevas normas de forma sencilla gracias a su estruct
 \label{sec:seccion1.2.8}
 Analiza las ficheros Python en busca de errores con la herramienta PyFlakesBear\footnote{\url{https://github.com/PyCQA/pyflakes}}, que puede detectar problemas de sintaxis, código sin uso y elementos indefinidos.
 
-Es una herramienta que no tiene en cuenta el estilo. Es mas limitado que otras herramientas debido a que sólo examina el árbol de sintaxis de los archivos de forma individual, pero esta característica también lo hace más rápido. No tiene disponibles opciones de configuración con Coala.
+Es una herramienta que no tiene en cuenta el estilo. Es más limitada que otras herramientas debido a que sólo examina el árbol de sintaxis de los archivos de forma individual, pero esta característica también lo hace más rápida. No tiene disponibles opciones de configuración con Coala.
 
 \begin{itemize}
   \item Lenguajes: Python, Python 3
@@ -460,7 +463,7 @@ Detecta los casos relacionados con la forma en que se ordenan los imports y es c
   \item Lenguajes: Python, Python 2, Python 3
   \item Configuración
     \begin{itemize}
-          \item USE\_PARENTHESES\_IN\_IMPORT:`True' si se utilizarán paréntesis en la declaración de los imports. Es opcional y por defecto es `True'.
+          \item USE\_PARENTHESES\_IN\_IMPORT:`True' si se han de utilizar paréntesis en la declaración de los imports. Es opcional y por defecto es `True'.
           \item FORCE\_ALPHABETICAL\_SORT\_IN\_IMPORT: Si su valor es `True', fuerza a que todos los imports sean ordenados en una sola sección, en lugar de estar dentro de otros grupos. Es opcional y por defecto es `False'.
           \item FORCE\_SORT\_WITHIN\_IMPORT\_SECTIONS: Si su valor es `True', los imports estarán ordenados según su sección sin importar el tipo. Es opcional y por defecto es `True'.
           \item FROM\_FIRST\_IN\_IMPORT: Si es `True', los imports usando `from' se muestran encima del resto. Es opcional y por defecto es `False'.
@@ -494,7 +497,7 @@ Detecta los casos relacionados con la forma en que se ordenan los imports y es c
 
 \subsubsection{PyLintBear}
 \label{sec:seccion1.2.10}
-Chequea el código con PyLint\footnote{\url{https://www.pylint.org/}}, ejecutándolo para cada fichero por separado. PyLint detecta errores de sintaxis, código no usado, errores de formato, duplicidad y problemas de seguridad, gracias al amplio listado de chequeos\footnote{\url{http://pylint-messages.wikidot.com/all-messages}} que lleva a cabo.
+Comprueba el código con PyLint\footnote{\url{https://www.pylint.org/}}, ejecutándolo para cada fichero por separado. PyLint detecta errores de sintaxis, código no usado, errores de formato, duplicidad y problemas de seguridad, gracias al amplio listado de comprobaciones\footnote{\url{http://pylint-messages.wikidot.com/all-messages}} que lleva a cabo.
 
 La herramienta cuenta con un listado de errores\footnote{\url{http://pylint-messages.wikidot.com/all-codes}} que serán mostrados por Coala.
 
@@ -562,9 +565,9 @@ Radon sirve para calcular la complejidad de un fichero dado.
 
 \subsubsection{VultureBear}
 \label{sec:seccion1.2.15}
-Chequea el código Python utilizando Vulture\footnote{\url{https://github.com/jendrikseipp/vulture}}. Esta herramienta busca en el código clases, funciones y variables que no son utilizadas, lo que ayuda a limpiar y encontrar errores en el código.
+Comprueba el código Python utilizando Vulture\footnote{\url{https://github.com/jendrikseipp/vulture}}. Esta herramienta busca en el código clases, funciones y variables que no son utilizadas, lo que ayuda a limpiar y encontrar errores en el código.
 
-Aunque Vulture es una herramienta muy útil, hay que tener en cuenta una serie de consideraciones. Debido a la naturaleza dinámica de Python, los analizadores de código estáticos como Vulture probablemente pueden saltarse partes del código en desuso. Además, el código que solo es llamado implícitamente puede ser reportado como código no utilizado.
+Aunque Vulture es una herramienta muy útil, hay que tener en cuenta una serie de consideraciones. Debido a la naturaleza dinámica de Python, los analizadores de código estáticos como Vulture probablemente pueden saltarse partes del código en desuso. Además, el código que solamente es llamado implícitamente puede ser reportado como código no utilizado.
 
 No cuenta con opciones de configuración en Coala.
 
@@ -613,9 +616,9 @@ Python ha sido utilizado en todo el proyecto debido a su facilidad de uso y su c
 \label{sec:seccion3}
 Django~\cite{django:_django}~\cite{bennet:_django} es un entorno de trabajo de alto nivel diseñado para alentar un desarrollo rápido y limpio, dando prioridad a un diseño pragmático. Con este entorno de trabajo solo hay que preocuparse de desarrollar la aplicación, sin tener en cuenta las consideraciones generales del desarrollo de aplicaciones web. Es un entorno versátil, flexible, rápidamente escalable, gratuito y de código abierto.
 
-Django está diseñado para ayudar a los desarrolladores a llevar sus aplicaciones desde el concepto hasta su terminación lo más rápido posible. Incluye docenas de extras que podemos utilizar para manejar las tareas más comunes del desarrollo web, tales como autenticación de usuarios o administración de contenidos entre otros.
+Django está diseñado para ayudar a los desarrolladores a desarrollar aplicaciones web lo más rápido posible. Incluye docenas de extras que podemos utilizar para manejar las tareas más comunes del desarrollo web, tales como autenticación de usuarios o  la administración de contenidos entre otros.
 
-Otro de los aspectos importantes de Django es la seguridad. Django ayuda a evitar errores de seguridad comunes como la inyección de SQL, cross-site scripting\footnote{\url{http://www.cgisecurity.com/xss-faq.html#whatis}}, etc... Su sistema de autenticación de usuarios proporciona una forma segura de administrar cuentas de usuario y contraseñas.
+Otro de los aspectos importantes de Django es la seguridad. Django ayuda a evitar errores de seguridad comunes como la inyección de SQL, cross-site scripting\footnote{\url{http://www.cgisecurity.com/xss-faq.html#whatis}}, etc. Su sistema de autenticación de usuarios proporciona una forma segura de administrar cuentas de usuario y contraseñas.
 
 He utilizado Django para desarrollar la aplicación por su facilidad a la hora de crear las vistas y el interfaz web con en el que se interactúa con la aplicación. Adicionalmente, con Django se simplifica considerablemente el manejo de bases de datos, un aspecto muy importante de este proyecto.
 
@@ -625,7 +628,7 @@ GitHub\footnote{\url{https://github.com/}} es una plataforma donde se almacenan 
 
 Cada proyecto tiene su propia página web, la posibilidad de hacer ramificaciones (forks), control de versiones, wikis, gestión de errores y la posibilidad de que otros desarrolladores colaboren en el proyecto.
 
-En la realización de este proyecto he utilizado la plataforma para obtener proyectos Python que analizar, clonados en local con Git, así como para almacenar tanto la aplicación como la memoria del proyecto. De este modo, ambos son públicos y están disponibles para su consulta o contribuciones de otros desarrolladores.
+En la realización de este proyecto he utilizado la plataforma para obtener proyectos Python que analizar, clonados en local con Git, así como para almacenar tanto la aplicación como la memoria del proyecto. De este modo, ambas son públicas y están disponibles para su consulta o contribuciones de otros desarrolladores.
 
 \section{Git} 
 \label{sec:seccion5}
@@ -637,7 +640,7 @@ Se trata de una de las principales herramientas de control de versiones. Se ha u
 \label{sec:seccion6}
 HTML (HyperText Markup Language)\footnote{\url{https://www.w3.org/html/}} es el lenguaje de marcado estándar utilizado para la creación de páginas web y sus elementos forman los bloques de construcción de todas las páginas web.~\cite{robson:_html_css}
 
-En el presente proyecto se ha utilizado para la creación de las diferentes páginas web que muestra Django y con las que interactúa el usuario para analizar o ver la información almacenada sobre los proyectos.
+En este proyecto se ha utilizado para la creación de las diferentes páginas web que muestra Django y con las que interactúa el usuario para analizar o ver la información almacenada sobre los proyectos.
 
 \section{BootStrap} 
 \label{sec:seccion7}
@@ -657,7 +660,7 @@ En este proyecto se utiliza CSS como parte de BootStrap, haciendo uso de las cla
 
 \section{JavaScript} 
 \label{sec:seccion9}
-JavaScript\footnote{\url{https://developer.mozilla.org/es/docs/Web/JavaScript}} es un lenguaje ligero e interpretado. Está orientado a objetos, es un lenguaje script multi-paradigma, basado en prototipos, dinámico e imperativo. Puede decirse que es el lenguaje de programación de las webs, aunque también es utilizado en otros entornos.
+JavaScript\footnote{\url{https://developer.mozilla.org/es/docs/Web/JavaScript}} es un lenguaje ligero e interpretado. Puede ser utilizado orientado a objetos, al ser multi-paradigma; está basado en prototipos, dinámico e imperativo. Puede decirse que es el lenguaje de programación de las webs, porque los navegadores a día de hoy sólo tienen una \emph{máquina} nativa de JavaScript, aunque también es utilizado en otros entornos.
 
 JavaScript sirve para especificar el comportamiento de las páginas web, y forma parte de la `triada' de tecnologías básicas para el desarrollo web junto con HTML y CSS.~\cite{flanagan:_js}
 
@@ -737,9 +740,9 @@ Cuando queremos analizar un solo fichero a partir de su URL, la aplicación se c
   \caption{Diagrama de flujo en el análisis de proyectos por URL.}
   \label{fig:AnalizarURL}
 \end{figure}
-Cuando el cliente introduce una URL en el campo de texto, la aplicación comprueba se corresponde con una dirección de GitHub. Si la dirección no es correcta, se mostrará una página de error, y en caso contrario de clonará el proyecto con git en un directorio local. Si el proyecto ya existe en la base de datos, se sobrescribirá y se realizará el análisis sobre la última versión del proyecto.
+Cuando el cliente introduce una URL en el campo de texto, la aplicación comprueba se corresponde con una dirección de GitHub. Si la dirección no es correcta, se mostrará una página de error; en caso contrario de clonará el proyecto con git en un directorio local. Si el proyecto ya existe en la base de datos, se sobrescribirá y se realizará el análisis sobre la última versión del proyecto.
 
-Una vez descargado el proyecto, se analiza con Coala. Como solo vamos a analizar los ficheros Python, hay que ejecutar Coala sobre los ficheros con extensión `.py'. Además queremos que los resultados se muestren con la estructura de un JSON y redirigirlo a un fichero para su posterior análisis. Teniendo en cuenta todo esto, se ejecuta Coala del siguiente modo, utilizando un pipe:
+Una vez descargado el proyecto, se analiza con Coala. Como solo vamos a analizar los ficheros Python, hay que ejecutar Coala sobre los ficheros con extensión `.py'. Además queremos que los resultados se muestren con la estructura de un JSON y redirigirlo a un fichero para su posterior análisis. Teniendo en cuenta todo esto, se ejecuta Coala del siguiente modo, utilizando un \emph{pipe} de Python:
 
 {\footnotesize
 \begin{verbatim}
@@ -980,7 +983,7 @@ Si queremos ver un resumen de todos los proyecto, ficheros y bears almacenados, 
   \label{fig:resumenBears}
 \end{figure}
 
-Finalmente, tenemos las páginas de información de cada proyecto, fichero y bears. En ellas se muestra toda la información almacenada en la base de datos. Cuando analizamos un proyecto, podemos consultar la página del proyecto y a partir de ahí navegar por los diferentes ficheros y consultar los bears que se han encontrado, los mensajes que lanza cada uno de ellos, etc...
+Finalmente, tenemos las páginas de información de cada proyecto, fichero y bears. En ellas se muestra toda la información almacenada en la base de datos. Cuando analizamos un proyecto, podemos consultar la página del proyecto y a partir de ahí navegar por los diferentes ficheros y consultar los bears que se han encontrado, los mensajes que lanza cada uno de ellos, etc.
 
 La página de proyecto muestra una información parecida a la que nos encontramos en la página de inicio, pero además tiene información sobre los ficheros almacenados para ese proyecto concreto. Esa información se puede mostrar u ocultar pinchando en el enlace correspondiente.
 \begin{figure}[H]
@@ -990,7 +993,7 @@ La página de proyecto muestra una información parecida a la que nos encontramo
   \label{fig:infoProyecto}
 \end{figure}
 
-La página de información del fichero muestra los datos del fichero, además de una tabla con todos los bears encontrados. Esta tabla tiene los datos básicos, como son el tipo de bear, el mensaje lanzado, las líneas afectadas y el Id de cada uno de los bears.
+La página de información del fichero muestra los datos del fichero, además de una tabla con todos los bears encontrados. Esta tabla tiene los datos básicos, como son el tipo de bear, el mensaje lanzado, las líneas afectadas y el identificador (Id) de cada uno de los bears.
 
 La página de información del bear muestra todos los datos almacenados para cada bear. Esta es la página con mayor nivel de detalle tras hacer el análisis, puesto que en ella podemos ver el problema concreto que ha detectado la herramienta.
 
@@ -1063,7 +1066,7 @@ Para la creación de la tabla Bear que contiene la información de los bears enc
 
 \cleardoublepage
 \chapter{Resultados}
-Para comprender la utilidad de la aplicación, vamos a analizar una lista de 50 proyectos\footnote{Dentro de los 52 con mas estrellas sólo se han excluido 2 por tamaño.} dentro de aquellos que cuentan con más estrellas en GitHub. Para ello, vamos a utilizar un fichero de configuración en el que incluiremos, en lugar de todo el listado disponible para Python, una selección de bears para centrarnos solo en algunos aspectos y evitando aquellos bears que hacen un análisis completo por si mismos. De este modo se pretende clasificar los resultados por los datos concretos que analiza cada uno de estos bears.
+Para comprender la utilidad de la aplicación, vamos a analizar una lista de 50 proyectos\footnote{De los 52 con más estrellas, dos han sido excluido debido a su gran tamaño.} de entre todos aquéllos que cuentan con más estrellas en GitHub. Para ello, vamos a utilizar un fichero de configuración en el que incluiremos, en lugar de todo el listado disponible para Python, una selección de bears para centrarnos solo en algunos aspectos y evitando aquellos bears que hacen un análisis completo por si mismos. De este modo se pretende clasificar los resultados por los datos concretos que analiza cada uno de estos bears.
 
 \section{Fichero de configuración}
 \label{sec:_coafile}
@@ -1146,7 +1149,7 @@ Podemos ver en más detalle uno de los bears de la lista a través del enlace. A
   \label{fig:bearData}
 \end{figure}
 
-Para ver exactamente donde se encuentra el fallo, podemos inspeccionar el fichero a través del enlace a la línea exacta desde la información de bear, en este caso la línea 24. Una vez abierto, comprobaremos que existe al menos un espacio en blanco a la derecha de `--json' que ha detectado el `SpaceConsistencyBear', ya que con la configuración utilizada para este análisis no permite estos espacios.
+Para ver exactamente dónde se encuentra el fallo, podemos inspeccionar el fichero a través del enlace a la línea exacta desde la información de bear, en este caso la línea 24. Una vez abierto, comprobaremos que existe al menos un espacio en blanco a la derecha de `--json' que ha detectado el `SpaceConsistencyBear', ya que con la configuración utilizada para este análisis no permite estos espacios.
 
 \begin{figure}[H]
   \centering
@@ -1157,7 +1160,7 @@ Para ver exactamente donde se encuentra el fallo, podemos inspeccionar el ficher
 
 De este modo, la aplicación nos ayuda a detectar errores y corregir el código en caso de ser necesario. 
 
-Uno de los principales ejemplos de uso sería analizar un proyecto propio de GitHub y a partir de los resultados del análisis, evaluar los errores que ha detectado la aplicación y corregir aquellos que consideremos necesarios para mejorar el funcionamiento del proyecto o ajustarnos a las normas de estilo establecidas.
+Uno de los principales ejemplos de uso sería analizar un proyecto propio de GitHub y, a partir de los resultados del análisis, evaluar los errores que ha detectado la aplicación y corregir aquellos que consideremos necesarios para mejorar el funcionamiento del proyecto o ajustarnos a las normas de estilo establecidas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1191,7 +1194,7 @@ El objetivo principal de este trabajo era el desarrollo de una aplicación web q
 En la elaboración de este trabajo se han utilizado numerosas tecnologías. Algunas de ellas eran totalmente desconocidas para mí, pero otras formaban parte del temario de asignaturas cursadas a lo largo de la carrera:
 
 \begin{enumerate}
-  \item Conocimiento adquiridos en SAT: es la asignatura en la que aprendí la mayor parte de de los conocimiento aplicados en este proyecto. En ella adquirí conocimientos de Python, Django, HTML, CSS,... por lo que está estrechamente relacionada con este proyecto.
+  \item Conocimiento adquiridos en SAT: es la asignatura en la que aprendí la mayor parte de de los conocimiento aplicados en este proyecto. En ella adquirí conocimientos de Python, Django, HTML, CSS, etc. por lo que está estrechamente relacionada con este proyecto.
   \item Arquitectura cliente-servidor: vista en más de una asignatura, llegando a presentar numerosas prácticas con este modelo aunque no solo en Python, también utilizando otros lenguajes como Java.
 \end{enumerate}
 
